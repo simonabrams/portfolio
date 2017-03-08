@@ -1,0 +1,195 @@
+/*
+
+    Droga5 Banner CSS
+    Simon Abrams
+    --------------------
+    sabrams@droga5.com
+
+*/
+
+/* centers elements horizontally and vertically */
+.center {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+/* centers elements horizontally */
+.center-horiz {
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto; }
+
+/* centers elements vertically */
+.center-vert {
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto; }
+
+.border {
+  z-index: 100;
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  pointer-events: none; }
+
+
+/**********  Utilities  ***********/
+*, *:before, *:after {
+  box-sizing: border-box; }
+
+body {
+  background-color: white;
+  padding: 0;
+  margin: 0; }
+
+/* set the dimensions of your banner here */
+.dimensions {
+  width: 300px;
+  height: 600px;
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+/*  apply this to initialize elements as hidden until they are needed.
+    use 'autoAlpha:1' in GSAP to show hidden elements */
+.hidden {
+  visibility: hidden; }
+
+/*.comp {
+  background: url('../images/comp.jpg') no-repeat;
+  opacity: 0.2;
+  background-size: contain;
+}*/
+
+div {
+  background-repeat: no-repeat;
+  display: block;
+  position: absolute;
+  }
+
+.svg {
+  background-size: contain;
+}
+
+/* main container element for banner */
+.banner {
+  overflow: hidden;
+  cursor: pointer;
+  background-color: white;
+  transform: translate3d(0px, 0px, 0px);
+  position: absolute;
+  width: 300px;
+  height: 600px;
+  }
+
+.banner .border {
+  width: 300px;
+  height: 600px; }
+
+/* sets up main stage clickable area */
+#hit {
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer; }
+
+/**********  Banner Elements/Layout  ***********/
+.brand-blue {
+  color: #4093d0;
+}
+
+.bg {
+  background-color: #fff; }
+
+/* headline */
+.headline {
+  background-image: url("../images/headline.svg");
+  width: 196px;
+  height: 50px;
+  top: 362px;
+}
+
+/* sprite animation holders */
+.sprite-container {
+  display: block;
+  overflow: hidden;
+}
+
+/* super g logo */
+.logo-container {
+  width: 199px;
+  height: 130px;
+  top: 254px;
+}
+
+.logo {
+  background-image: url('../images/super-g-sprite.png');
+  width: 199px;
+  height: 130px;
+}
+
+/* product image animation */
+.product-container {
+  width: 300px;
+  height: 600px;
+}
+
+.product {
+  /* set the zoom and -moz-transform to scale down the animation */
+  
+}
+
+/* carrier logo (if any) */
+.carrier-logo {
+  background-image: url('../images/logo-verizon.svg');
+  background-repeat: no-repeat;
+  width: 91px;
+  height: 35px;
+  top: 543px;
+}
+
+/**********  CTA  ***********/
+.cta-container {
+  position: absolute;
+  overflow: hidden;
+  width: 84px;
+  height: 24px;
+  top: 463px;
+
+  /* drop shadow */
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.25);
+  -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.25);
+  box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.25);
+}
+
+.cta-bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #4285f4;
+  border-radius: 1px;
+}
+
+.ripple-effect {
+  position: absolute;
+  background-color: #90CAF9;
+  width: 100px;
+  height: 100px;
+  border-radius: 50% 50%;
+}
+
+.cta-label {
+  position: absolute;
+  background-image: url('../images/cta-label.svg');
+  background-repeat: no-repeat;
+  width: 54px;
+  height: 8px;
+  left: 0;
+}
+
+
+
+
+
+

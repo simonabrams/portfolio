@@ -1,0 +1,311 @@
+/*
+
+    Droga5 Banner CSS
+    Adrian Velazquez
+    --------------------
+    avelazquez@droga5.com
+
+*/
+
+
+
+
+/**********  Utilities  ***********/
+
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+    background-color: #fff;
+    padding:0; margin:0;
+}
+
+
+/* set the dimensions of your banner here */
+.dimensions {
+    width: 300px;
+    height: 600px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/*  apply this class to retina sized graphics
+    be sure to change the dimensions to double the width and height of your banner's actrual dimensions */
+.retina {
+    background-size: calc(600px/2) calc(1200px/2);
+    width:calc(600px/2);
+    height:calc(1200px/2);
+}
+
+/* centers elements horizontally */
+.center-horiz {
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* centers elements vertically */
+.center-vert {
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+/* centers elements vertically */
+.center {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+
+/*  apply this to initialize elements as hidden until they are needed.
+    use 'autoAlpha:1' in GSAP to show hidden elements */
+.hidden {
+    visibility: hidden;
+}
+
+.comp {
+    background-repeat: no-repeat;
+    // background-image: url('../images/comp5.jpg');
+    opacity: 0.2;
+
+}
+
+
+div {
+    background-repeat: no-repeat;
+    display: block;
+    position: absolute;
+    overflow: hidden;
+}
+
+
+/* main container element for banner */
+#banner {
+    position: absolute;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: white;
+    transform: translate3d(0px, 0px, 0px);
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#banner .border {
+    border: 1px solid rgb(197, 197, 197);
+    z-index: 100;
+    border: 1px solid rgba(0, 0, 0, 0.7);
+    width: 300px;
+    height: 600px;
+    pointer-events: none;
+}
+
+/* sets up main stage clickable area */
+#hit {
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+}
+
+
+
+/**********  Banner Elements/Layout  ***********/
+
+
+#background {
+    background-image: url('../images/bg_gradient_2x.jpg');
+    background-repeat: no-repeat;
+    width: calc(600px/2);
+    height: calc(956/2);
+    background-size: cover;
+}
+
+/* placeholder - replace this with the styling for your headlines. duplicate as needed */
+.copy,
+.image {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.copy-mask {
+    clip: rect(23px 253px 153px 0px);
+    top: 64px;
+    left: 25px;
+}
+
+/* controls */
+
+#controls {
+    width: 15px;
+    height: 18px;
+    left: 268px;
+    top:10px;
+}
+#btn_pause {
+    background-image: url('../images/pause.png');
+    height: 14px;
+    width: 11px;
+    background-size: cover;
+}
+#btn_replay {
+    background-image: url('../images/replay.png');
+    width: 11px;
+    height: 15px;
+    background-size: contain;
+
+}
+
+/* frame 1 */
+#copy1 {
+    background-image: url('../images/text_1.png');
+    width: calc(293px/2);
+    height: calc(249px/2);
+    top: 25px;
+    left: 57px;
+}
+#card1 {
+    background-image: url('../images/card.png');
+    width: 241px;
+    height: 197px;
+    right: 0;
+    top: 268px;
+}
+
+/* frame 2 */
+#copy2 {
+    background-image: url('../images/text_2.png');
+    width: calc(328px/2);
+    height: calc(248px/2);
+    top: 26px;
+    left: 43px;
+}
+
+/* frame 3 */
+#copy3 {
+    background-image: url('../images/text_3.png');
+    width: calc(330px/2);
+    height: calc(252px/2);
+    top: 26px;
+    left: 44px;
+}
+
+#ellie1 {
+    background-image: url('../images/image_ellie_1.png');
+    width: 194px;
+    height: 281px;
+    left: 52px;
+    top: 241px;
+
+}
+
+/* frame 4 */
+#copy4 {
+    background-image: url('../images/text_4.png');
+    width: calc(446px/2);
+    height: calc(148px/2);
+    top: 26px;
+    left: 18px;
+}
+
+#ellie2 {
+    background-image: url('../images/image_ellie_2.png');
+    width: 238px;
+    height: 281px;
+    left: -3px;
+    top: 241px;
+}
+
+
+/* endframe */
+#headline {
+    background-image: url('../images/text_headline.png');
+    width: calc(436px/2);
+    height: calc(302px/2);
+    top: 90px;
+}
+#card2 {
+    background-image: url('../images/card_endframe.png');
+    width: calc(472px/2);
+    height: calc(274px/2);
+    top: 380px;
+}
+
+
+/* footer */
+
+#footer {
+    background-color: white;
+    width: 100%;
+    height: 78px;
+    bottom: 0;
+}
+
+#logo {
+    background-image: url('../images/logo.svg');
+    width: 259px;
+    height: 33px;
+    left: 21px;
+    top: 545px;
+    background-size: contain;
+}
+
+/**********  CTA  ***********/
+
+/* placeholder - update these elements as needed */
+#cta {
+    width: 148px;
+    height: 38px;
+    background-color: #0092ff;
+    border-radius: 4px;
+    left: 76px;
+    top: 257px;
+}
+
+#cta-label {
+    position: relative;
+    background-image: url("../images/cta_label.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 87px;
+    height: 12px;
+    margin: 13px 30.5px;
+}
+
+
+/**********  REMOVE - SLIDER  ***********/
+#slider_bar {
+  position:absolute;
+  width: 300px;
+  height:40px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  margin-bottom: 120px;
+}
+
+#ctrl_slider {
+    background: rgba(80,80,80,0.3);
+    border:1px solid rgba(102,102,102,0.5);
+}
+
+.progress {
+    font-family: sans-serif;
+    position: relative;
+    float: right;
+    margin-top: 10px;
+}
+
+/**********  END REMOVE  ***********/

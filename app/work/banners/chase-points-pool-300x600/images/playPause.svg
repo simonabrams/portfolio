@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="playPause" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+<g id="playpause-btns-white">
+	<g id="playpause-btn-pause-white">
+		<path fill="#FFFFFF" d="M7.092,15H6.78c-0.554,0-1.007-0.453-1.007-1.006V6.006C5.773,5.453,6.226,5,6.78,5h0.312
+			c0.553,0,1.006,0.453,1.006,1.006v7.988C8.098,14.547,7.645,15,7.092,15z M13.22,15h-0.312c-0.553,0-1.006-0.453-1.006-1.006
+			V6.006C11.902,5.453,12.355,5,12.908,5h0.312c0.554,0,1.007,0.453,1.007,1.006v7.988C14.227,14.547,13.774,15,13.22,15z"/>
+	</g>
+	<path id="playpause-btn-play-white" fill="#FFFFFF" d="M26.07,5v10l7.859-5l-7.86-5H26.07z"/>
+</g>
+<g id="playpause-btns-grey">
+	<g id="playpause-btn-pause">
+		<path fill="#A5A0AA" d="M7.092,35H6.78c-0.554,0-1.007-0.453-1.007-1.006v-7.988C5.773,25.453,6.226,25,6.78,25h0.312
+			c0.553,0,1.006,0.453,1.006,1.006v7.988C8.098,34.547,7.645,35,7.092,35z M13.22,35h-0.312c-0.553,0-1.006-0.453-1.006-1.006
+			v-7.988c0-0.553,0.453-1.006,1.006-1.006h0.312c0.554,0,1.007,0.453,1.007,1.006v7.988C14.227,34.547,13.774,35,13.22,35z"/>
+	</g>
+	<path id="playpause-btn-play" fill="#A5A0AA" d="M26.07,25v10l7.859-5l-7.86-5H26.07z"/>
+</g>
+</svg>

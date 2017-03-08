@@ -1,0 +1,299 @@
+
+button {
+  background-color: transparent;
+  border: none;
+  color: #FFF;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  user-select: none;
+}
+
+button:hover, button:active {
+  color: #FAF000;
+}
+
+button:active {
+  font-size: 11px;
+}
+
+body{
+  margin:0px;
+}
+
+#container{
+  position: absolute;
+  display: block;
+  width: 970px;
+  height: 250px;
+  cursor: pointer;
+}
+
+#ad{
+   position: absolute;
+   display: block;
+   left:0px;
+   overflow:hidden;
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+
+#ad.collapsed{
+  width: 970px; /*2px smaller to account for border*/
+  height: 66px; /*2px smaller to account for border*/
+}
+
+#ad.expanded{
+  width: 970px; /*2px smaller to account for border*/
+  height: 415px; /*2px smaller to account for border*/
+}
+
+#banner{
+  position:absolute;
+  display: block;
+  width: 970px;
+  height: 66px;
+  left:0px;
+  overflow: hidden;
+  background-color: #002247;
+}
+
+#banner .headline {
+  background-image: url('../images/banner_img-headline.png');
+  background-repeat: no-repeat;
+  position: absolute;
+  background-size: contain;
+  width: 970px;
+  height: 66px;
+  left: 0;
+  top: 0;
+}
+
+#banner .logo {
+  width: 127px;
+  height: 38px;
+  position: absolute;
+  left: 49px;
+  top: 12px;
+}
+
+/**
+ * cta
+ */
+
+#banner .cta {
+  position: absolute;
+  width: 93px;
+  height: 15px;
+  left: 838px;
+  top: 25px;
+  overflow: hidden;
+}
+#banner .cta .labelMask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 83px;
+  height: 15px;
+  overflow: hidden;
+  clip: rect(0 70px 15px 0);
+}
+
+#banner .cta .buttonLabel {
+  background-image: url('../images/banner_cta-label.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  width: 83px;
+  height: 15px;
+  left: 0;
+  top: 0;
+}
+
+#banner .cta .buttonArrow {
+  background-image: url('../images/banner_cta-arrow.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  width: 83px;
+  height: 15px;
+  left: 0;
+  top: 0;
+  visibility: hidden;
+  opacity: 0;
+}
+
+#banner .replay {
+  cursor: pointer;
+  position: absolute;
+  background-image: url('../images/replay.svg');
+  background-repeat: no-repeat;
+  width: 12px;
+  height: 12px;
+  left: 953px;
+  top: 6px;  
+}
+
+
+/**
+ Expansion
+*/
+
+#expansion{
+  position:absolute;
+  background: url('../images/panelBg.jpg') no-repeat;
+  background-size: 970px 415px;
+  width: 970px;
+  height: 415px;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+#expansion .logo {
+  position: absolute;
+  width: 292px;
+  height: 88px;
+  left: 75px;
+  top: 258px;
+}
+
+#expansion .headline1 {
+  background: url('../images/img-headline1.png');
+}
+
+#expansion .headline2 {
+  background: url('../images/img-headline2.png');
+  visibility: hidden;
+  opacity: 0;
+}
+
+#expansion .headline1,
+#expansion .headline2 {
+  position: absolute;
+  width: 970px;
+  height: 415px;
+  background-repeat: no-repeat;
+  background-size: 970px 415px;
+  left: 0;
+  top: 0;
+}
+
+#expansion .balloon {
+  background: url('../images/img-balloon.png') no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 186px;
+  height: 437px;
+  left: 565px;
+  top: -10px;
+  visibility: hidden;
+  opacity: 0;
+}
+
+
+
+#expansion .label{
+  color: #0D2A4D;
+  position: absolute;
+  width: 229px;
+  height: 20px;
+  top: 45px;
+  left: 10px;
+  line-height: 18px;
+  font-size: 13px;
+  font-family: Arial;
+}
+
+#expansion #closeButton{
+  background: url('../images/close-label.png') no-repeat;
+  background-size: 64px 12px;
+  position: absolute;
+  width: 64px;
+  height: 12px;
+  left: 892px;
+  top: 10px;
+}
+
+/**
+ CTA
+*/
+
+#clickthroughButton{
+  position: absolute;
+  width: 188px;
+  height: 41px;
+  left: 712px;
+  top: 281px;
+  overflow: hidden;
+}
+
+#expansion #clickthroughButton .cta-label-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 140px;
+  height: 41px;
+}
+
+#expansion #clickthroughButton .cta-label {
+  background: url('../images/cta-label.png') no-repeat;
+  background-size: contain;
+  position: absolute;
+  width: 178px;
+  height: 41px;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+#expansion #clickthroughButton .cta-arrow {
+  background: url('../images/cta-arrow.png') no-repeat;
+  background-size: contain;
+  position: absolute;
+  width: 178px;
+  height: 41px;
+  left: 0;
+  top: 0;
+  visibility: hidden;
+  opacity: 0;
+}
+
+
+
+
+/* ---------------- */
+
+
+.image {
+    position: absolute
+}
+
+
+
+
+/* ---------------- */
+
+
+
+#hit {
+  position:absolute;
+  display: block;
+  width:970px;
+  height:415px;
+  top:0px;
+  right:0px;
+}
+
+#hitCollapsed {
+  position:absolute;
+  display: block;
+  width:970px;
+  height:90px;
+  top:0px;
+  right:0px;
+}

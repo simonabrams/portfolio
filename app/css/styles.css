@@ -1,0 +1,144 @@
+html {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 100%;
+  min-height: 100vh; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #000;
+  background: url("../images/bg-blur.jpg") no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: screen;
+  font-family: 'prenton-display', sans-serif; }
+
+.background-pattern, .hero, footer {
+  background-color: #000;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%239da5df' fill-opacity='0.1' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+
+.hero {
+  opacity: 0.9;
+  padding: 1rem 0 3rem;
+  text-align: center;
+  color: #d4d4d4;
+  font-family: "prenton-condensed", sans-serif;
+  font-weight: 700; }
+
+.hero-title {
+  text-transform: uppercase;
+  font-size: 3.2rem; }
+
+.hero-subtitle {
+  font-size: 1.6rem;
+  font-weight: 400; }
+
+.about {
+  width: 100%;
+  padding: 4rem 6rem;
+  margin: 0px auto;
+  background-color: #1a1a1a;
+  border-top: 3px solid #d4d4d4;
+  color: #d4d4d4; }
+
+footer {
+  background-color: #1a1a1a;
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6rem;
+  color: #e4e4e4; }
+
+.contact-info {
+  padding: 0; }
+
+.contact-info_item {
+  display: inline-block;
+  list-style-type: none; }
+  .contact-info_item .fa {
+    padding: 0.5rem;
+    color: #e4e4e4;
+    font-size: 1.6rem; }
+
+.contact-info_item:last-of-type {
+  border-right: none; }
+
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+.work-description {
+  margin: 0;
+  padding: 2px;
+  color: white;
+  font-size: 0.9rem; }
+
+.work-grid {
+  margin: 2rem auto;
+  width: 95%; }
+
+/* sizer element for Masonry */
+.work-grid-sizer {
+  width: 300px;
+  margin: 0;
+  padding: 0; }
+
+.work-module {
+  overflow: hidden;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  margin-bottom: 30px;
+  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #1a1a1a; }
+  .work-module img {
+    float: left; }
+
+.work-thumbnail {
+  opacity: 0.8;
+  transform: scale(1.01);
+  transition: all 0.5s cubic-bezier(0.67, 0.01, 0.26, 1); }
+
+.work-thumbnail:hover {
+  opacity: 1;
+  transform: scale(1.05); }
+
+.work-info {
+  position: absolute;
+  padding: 10px;
+  width: 100%;
+  height: 5rem;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  transform: translateY(5rem);
+  transition: all 0.4s cubic-bezier(0.52, 0.02, 0, 1.01); }
+  .work-info a {
+    text-decoration: none;
+    color: white; }
+  .work-info a:hover {
+    color: #f36a00; }
+  .work-info a:visited {
+    color: white; }
+
+.work-info.active {
+  transform: translateY(0); }
+
+.fl-iframe {
+  overflow: hidden; }
+
+.featherlight .featherlight-content {
+  overflow: hidden;
+  padding: 10px 10px 0;
+  border-bottom: 10px solid transparent; }

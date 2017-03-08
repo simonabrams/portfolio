@@ -1,0 +1,387 @@
+body {
+    background-color: #e5e5e5;
+}
+
+
+/****************************************************************************** 
+
+Layout
+
+******************************************************************************/
+
+#rootContainer {
+    width: 300px;
+    height: 600px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    margin: auto;
+    background-color: #f0f0f0;
+}
+
+#mainContainer{
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 0;
+}
+
+#fullStroke {
+    position: absolute;
+    width: 298px;
+    height: 598px;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #d4d4d4;
+    background-position: 0 0;
+    top: -1px;
+    left: -1px;
+}
+
+
+
+/****************************************************************************** 
+
+Dots 
+
+******************************************************************************/
+
+#dots-container {
+  position: absolute;
+  overflow: hidden;
+  visibility: hidden;
+  top: 32px;
+  width: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  right: 0;
+  left: 0;
+}
+
+#dots {
+  fill: none;
+  stroke-width: 5px;
+  stroke-linecap: round;
+  margin: auto;
+
+}
+
+.blue {
+ stroke: #0086f8; 
+}
+
+.red {
+ stroke: #ff4131; 
+}
+
+.yellow {
+ stroke: #ffbc00; 
+}
+
+.green {
+ stroke: #00aa4a; 
+}
+
+
+
+/****************************************************************************** 
+
+Main content 
+
+******************************************************************************/
+
+/* CTA button */
+
+#ctaContainer {
+    position: absolute;
+    top: 118px;
+    left: 104px;
+    visibility: hidden;
+    cursor: pointer;
+    z-index: 10;
+}
+
+#ctaSVG {
+    position: absolute;
+    z-index: 11;
+}
+
+#ctaCopy{   
+    z-index: 12;
+}
+
+#ctaBox{
+    position: absolute;
+    width: 92px;
+    height: 26px;
+    background-color:  #79c259;
+    z-index: auto;
+}
+
+/* Catchall button */
+
+#catchAllContainer {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: black;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 200;
+}
+
+
+
+
+/****************************************************************************** 
+
+Phone and cards
+
+******************************************************************************/
+
+#phoneContainer {
+    opacity: 1;
+    width: 486px;
+    height: 422px;
+    position: absolute;
+    top: 157px;
+    left: -114px;
+    overflow: hidden;
+    z-index: 20;
+}
+
+#phone {
+    opacity: 1;
+    width: 486px;
+    height: 422px;
+    position: absolute;
+    overflow: hidden;
+    z-index: 21;
+}
+
+#phoneShadow {
+    visibility: hidden;
+    background-image: url('../images/phone-shadow.png');
+    background-repeat: no-repeat;
+    -webkit-background-size: 486px 422px;
+    background-size: 486px 422px;
+    width: 486px;
+    height: 422px;
+    position: absolute;
+    
+}
+
+
+.shadow {
+    opacity: 1;
+    position: absolute;
+}
+
+
+#allPhotos {
+    width: 300px;
+    height: 600px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: visible;
+    z-index: 30;
+    
+}
+
+/* TODO: get rid of this */
+/*#allPhotos svg,
+#phone svg {
+    visibility: hidden;
+}*/
+
+#photo01,
+#photo02,
+#photo03,
+#photo04,
+#photo05,
+#photo06,
+#photo07,
+#photo08 {
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+#photo01 {
+    opacity: 1;
+    position: absolute;
+    left: 141px;
+    top: 389px;
+    width: 80px;
+    height: 79px;
+    -webkit-transform: translateZ(10);
+    z-index: 31;
+}
+
+#photo02 {
+    opacity: 1;
+    position: absolute;
+    left: 85px;
+    top: 359px;
+    width: 78px;
+    height: 76px;
+    -webkit-transform: translateZ(20);
+    z-index: 32;
+}
+
+#photo03 {
+    opacity: 1;
+    position: absolute;
+    left: 38px;
+    top: 332px;
+    width: 77px;
+    height: 73px;
+    -webkit-transform: translateZ(30);
+    z-index: 33;
+}
+
+#photo04 {
+    opacity: 1;
+    position: absolute;
+    left: 7px;
+    top: 298px;
+    width: 71px;
+    height: 73px;
+    -webkit-transform: translateZ(40);
+    z-index: 34;
+}
+
+#photo05 {
+    opacity: 1;
+    position: absolute;
+    left: -13px;
+    top: 257px;
+    width: 93px;
+    height: 61px;
+    -webkit-transform: translateZ(50);
+    z-index: 35;
+}
+
+#photo06 {
+    opacity: 1;
+    position: absolute;
+    left: -29px;
+    top: 211px;
+    width: 80px;
+    height: 84px;
+    -webkit-transform: translateZ(60);
+    z-index: 36;
+}
+
+#photo07 {
+    opacity: 1;
+    position: absolute;
+    left: 28px;
+    top: 150px;
+    width: 49px;
+    height: 57px;
+    -webkit-transform: translateZ(70);
+    z-index: 41;
+}
+
+#photo08 {
+    opacity: 1;
+    position: absolute;
+    left: -40px;
+    top: 155px;
+    width: 81px;
+    height: 89px;
+    -webkit-transform: translateZ(70);
+    z-index: 38;
+}
+
+#photo09 {
+    opacity: 1;
+    position: absolute;
+    left: -54px;
+    top: 94px;
+    width: 85px;
+    height: 97px;
+    -webkit-transform: translateZ(70);
+    z-index: 39;
+}
+
+#photo10 {
+    opacity: 1;
+    position: absolute;
+    left: 62px;
+    top: 224px;
+    width: 44px;
+    height: 42px;
+    -webkit-transform: translateZ(70);
+    z-index: 40;
+}
+
+/****************************************************************************** 
+
+Headlines
+
+******************************************************************************/
+
+.copy01,
+.copy02{
+    visibility: hidden;
+    width: 300px;
+    height: 600px;
+    position: absolute;
+}
+
+.copy01 {
+    background: url('../images/text1.svg') no-repeat;
+}
+.copy02 {
+    background: url('../images/text2.svg') no-repeat;
+}
+
+
+
+/****************************************************************************** 
+
+Logo 
+
+******************************************************************************/
+
+#logo{
+    visibility: hidden;
+}
+
+#androidLogo {
+    width: 300px;
+    height: 600px;
+}
+
+.droidBot{
+    visibility: hidden;
+}
+
+
+.arm{
+    -ms-transform-origin: 12px 10px;
+    -webkit-transform-origin: 12px 10px;
+    -moz-transform-origin: 12px 10px;
+    /*transform-origin: 20px 20px; this is what works for Edge on 10*/
+    transform-origin: 12px 10px;
+}
+
+/* Win 10 Edge CSS hack below*/
+
+@supports (-ms-accelerator:true) {
+    .arm { transform-origin: 20px 20px; };
+}
+

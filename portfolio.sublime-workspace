@@ -1,0 +1,408 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ba",
+				"background-pattern"
+			],
+			[
+				"backg",
+				"background-color"
+			],
+			[
+				"visib",
+				"visibility"
+			],
+			[
+				"mod",
+				"moduleId"
+			],
+			[
+				"pro",
+				"portfolio-data"
+			],
+			[
+				"open",
+				"open-active"
+			],
+			[
+				"align",
+				"align-items"
+			],
+			[
+				"get",
+				"getElementsByClassName"
+			],
+			[
+				"getEl",
+				"getElementsByClassName"
+			],
+			[
+				"al",
+				"align-center"
+			],
+			[
+				"color",
+				"colorGreen"
+			],
+			[
+				"small-",
+				"small-12"
+			],
+			[
+				"media-ob",
+				"media-object-section"
+			],
+			[
+				"contact-li",
+				"contact-list"
+			],
+			[
+				"inte",
+				"integerInRange"
+			],
+			[
+				"game",
+				"gameoverText"
+			],
+			[
+				"enemyBull",
+				"enemyBulletPool"
+			],
+			[
+				"ene",
+				"enemyPool"
+			],
+			[
+				"keyC",
+				"KEY_CODES"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 333.0,
+		"last_filter": "markdown",
+		"selected_items":
+		[
+			[
+				"markdown",
+				"MarkdownLivePreview: Edit Current File"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"snip for",
+				"Snippet: for (…) {…}"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Preferences: Browse Packages"
+			],
+			[
+				"mat",
+				"Material Theme: Activate theme"
+			]
+		],
+		"width": 503.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/simon/Dev/portfolio",
+		"/Users/simon/Dev/portfolio/app",
+		"/Users/simon/Dev/portfolio/app/partials/includes",
+		"/Users/simon/Dev/portfolio/app/partials/layouts",
+		"/Users/simon/Dev/portfolio/app/work/banners"
+	],
+	"file_history":
+	[
+		"/Users/simon/Dev/portfolio/app/pages/index.hbs",
+		"/Users/simon/Dev/portfolio/app/partials/layouts/default.hbs",
+		"/Users/simon/Dev/portfolio/app/js/app.js",
+		"/Users/simon/Dev/portfolio/app/partials/includes/workModule.hbs",
+		"/Users/simon/Dev/portfolio/app/portfolio-data.json",
+		"/Users/simon/Dev/portfolio/app/scss/_variables.scss",
+		"/Users/simon/Dev/portfolio/app/scss/_base.scss",
+		"/Users/simon/Dev/portfolio/app/scss/styles.scss",
+		"/Users/simon/Dev/portfolio/README.md",
+		"/Users/simon/Dev/portfolio/.git/config",
+		"/Users/simon/Dev/portfolio/git",
+		"/Users/simon/Dev/portfolio/config",
+		"/Users/simon/Dropbox/Work/Freelance/andy bakes/site/dev/andy-bakes/node_modules/gulp-sass/node_modules/node-sass/node_modules/request/node_modules/form-data/node_modules/async/node_modules/lodash/every.js",
+		"/Users/simon/Dev/portfolio/app/work/banners/chase-usopen-espn-300x250/index.html",
+		"/Users/simon/Dev/portfolio/package.json",
+		"/Users/simon/Dev/portfolio/app/partials/includes/hero.hbs",
+		"/Users/simon/Dev/portfolio/app/partials/includes/footer.hbs",
+		"/Users/simon/Dev/portfolio/gulpfile.js",
+		"/Users/simon/Dev/portfolio/app/assets/fonts/font-awesome/scss/_variables.scss",
+		"/Users/simon/.zshrc",
+		"/Users/simon/.zsch",
+		"/Users/simon/Dev/portfolio/app/scss/hero.scss",
+		"/Users/simon/Dev/portfolio/app/portfolio-config.json",
+		"/Users/simon/Dev/portfolio/app/templates/pages/index.hbs",
+		"/Users/simon/Dev/portfolio/app/~index.html",
+		"/Users/simon/Dev/portfolio/app/templates/index.hbs",
+		"/Users/simon/Dev/portfolio/app/templates/partials/includes/hero.hbs",
+		"/Users/simon/Dev/portfolio/app/templates/partials/layouts/default.hbs",
+		"/Users/simon/Dev/portfolio/app/templates/partials/includes/footer.hbs",
+		"/Users/simon/Dev/portfolio/app/templates/layouts/default.hbs",
+		"/Users/simon/Dev/portfolio/app/templates/partials/_global/styles.hbs",
+		"/Users/simon/Dev/portfolio/app/js/templates.js",
+		"/Users/simon/Dev/portfolio/app/templates/partials/_global/metadata.hbs",
+		"/Users/simon/Dev/portfolio/app/index.html",
+		"/Users/simon/Dev/portfolio/app/templates/partials/header.hbs",
+		"/Users/simon/Dev/portfolio/app/css/styles.css",
+		"/Users/simon/Dev/portfolio/dist/js/templates.js",
+		"/Users/simon/Dev/lifes-a-bitch/gulpfile.js",
+		"/Users/simon/Dev/lifes-a-bitch/app/index.html",
+		"/Users/simon/Dev/lifes-a-bitch/app/scss/styles.scss",
+		"/Users/simon/Dev/lifes-a-bitch/app/js/app.js",
+		"/Users/simon/Dev/lifes-a-bitch/app/styles.scss",
+		"/Users/simon/Dev/lifes-a-bitch/index.html",
+		"/Users/simon/Dev/lifes-a-bitch/css/styles.css",
+		"/Users/simon/Dev/lifes-a-bitch/js/app.js",
+		"/Users/simon/Dropbox/Work/Freelance/andy bakes/site/dev/andy-bakes-v3/src/pages/index.html",
+		"/Users/simon/Dropbox/Work/Freelance/andy bakes/site/dev/andy-bakes-v3/src/layouts/default.html",
+		"/Users/simon/Dropbox/Work/Freelance/andy bakes/site/dev/andy-bakes-v3/src/assets/scss/app.scss",
+		"/Users/simon/Dropbox/Work/Freelance/andy bakes/site/dev/andy-bakes-v3/dist/index.html",
+		"/Users/simon/Dropbox/Work/Freelance/andy bakes/site/dev/andy-bakes/scss/app.scss",
+		"/Users/simon/Dropbox/Dev/GSAP Class Files/Tween Control/finished.html",
+		"/Users/simon/Dropbox/Dev/GSAP Class Files/Tween Methods and Callbacks/finished.html",
+		"/Users/simon/Creative Cloud Files/faces/Asset 1.svg",
+		"/Users/simon/Dropbox/Work/Freelance/andy bakes/site/dev/andy-bakes/scss/_settings.scss",
+		"/Users/simon/Dropbox/Work/Freelance/andy bakes/site/dev/andy-bakes/scss/styles.scss",
+		"/Users/simon/Creative Cloud Files/Andy Bakes/site/dev/andy-bakes/gulpfile.js",
+		"/Users/simon/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/simon/Dev/phaser-sidescroller-master/js/~Game.js",
+		"/Users/simon/Dev/Interphase1/coverdisk/state-manager/08 - pauseUpdate/StateA.js",
+		"/Users/simon/Library/Application Support/Sublime Text 3/Packages/HTML-CSS-JS Prettify/HTMLPrettify.sublime-settings",
+		"/Users/simon/Dev/space-shooter/space_shooter.js",
+		"/Users/simon/Dev/html5-game/index.html",
+		"/Users/simon/Dev/html5-game/space_shooter_part_one.js",
+		"/Users/simon/Downloads/oojs_project_files/1_Dice/4_dice_returning_values_finished/dice.js",
+		"/Users/simon/Desktop/coding math/coding math 2/index.html",
+		"/Users/simon/Desktop/coding math/coding math 2/trig01.js",
+		"/Users/simon/Desktop/math for coding/main.js",
+		"/Users/simon/Desktop/math for coding/index.html",
+		"/Users/simon/Downloads/Scion_FRS_02-16/SCI_0025_FRS_Standard_300x250_03/banner.js",
+		"/Users/simon/Downloads/Scion_FRS_02-16/SCI_0025_FRS_Standard_160x600/banner.js",
+		"/Users/simon/Downloads/Scion_FRS_02-16/SCI_0025_FRS_Standard_728x90/banner.js"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 158.0,
+		"where_history":
+		[
+			"\""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"600",
+			"250",
+			"\"thumbnailUrl\": \"\",",
+			"img",
+			"var",
+			"em",
+			"1em",
+			"em",
+			"1em",
+			"div",
+			"h1",
+			"lg",
+			"'",
+			"li",
+			"p",
+			"contact-info",
+			"h1",
+			"var",
+			"/'))\n",
+			"}",
+			"absolutes",
+			"hits",
+			"responseText",
+			"columns",
+			"<h1>hello</h1>",
+			"column",
+			"div",
+			"6",
+			"12",
+			"li",
+			"20",
+			"row",
+			"flex",
+			"2",
+			"h1",
+			"textWdith",
+			"gameoverText",
+			"coin",
+			"Coin",
+			"coin",
+			"5",
+			"spin",
+			"missile",
+			"Coin",
+			"enemyBulletPool",
+			"enemyBullet",
+			"Bullet",
+			"bullet",
+			"imgs",
+			"ship",
+			"Height",
+			"width"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\"",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 68.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "portfolio.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"app",
+				"app/js/app.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 297.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

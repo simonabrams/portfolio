@@ -1,0 +1,11 @@
+{{> layouts/default title="Simon Abrams | Interactive Developer"}}
+
+{{!-- Banners grid will go here --}}
+{{#*inline "content-block"}}
+    <div class="work-grid">
+    <div class="work-grid-sizer"></div>
+    {{#each banners}}
+        {{> includes/workModule}}
+    {{/each}}
+    </div>
+{{/inline}}
