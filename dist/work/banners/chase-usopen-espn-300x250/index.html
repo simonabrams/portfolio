@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<!-- AdStarter Adobe Animate CC Template v.1.0, created by Cory Hudson, 03/09/16 -->
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CHR1618_USOpen_ESPN_PreQ_300x250</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<style>
+html, body{
+	margin: 0;
+	padding: 0;
+	background-color: #FFFFFF;
+}
+#canvas{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	-moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	cursor: pointer;
+	visibility: hidden;
+}
+#border{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	border: 1px solid #000000;
+	pointer-events: none;
+	visibility: hidden;
+}
+#plContainer{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background-color: none;
+	border: none;
+}
+div.preloader{
+	position: relative;
+}
+div.preloader p {
+	font-family: arial;
+	font-size: 100%; 
+	color: white;
+	margin: 0;
+	padding: 5px;
+    background: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+/* controls */
+.hidden {
+    visibility: hidden;
+}
+#controls {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    left: 285px;
+    top: 6px;
+}
+#btn_pause, #btn_play {
+    position: absolute;
+    background-image: url('images/playPause.png');
+    height: 10px;
+    width: 9px;
+    background-size: 19px 10px;
+}
+
+#btn_pause {
+    background-position: 0 0;
+}
+#btn_play {
+    background-position: -10px 0;
+}
+
+#btn_replay {
+    background-image: url('images/replay.svg');
+    width: 9px;
+    height: 11px;
+
+}
+
+/* offscreen text for screen readers - accessibility requirement */
+.off-screen { 
+    position: absolute; 
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */ 
+    clip: rect(1px, 1px, 1px, 1px); 
+    padding: 0; 
+    border: 0; 
+    height: 1px; 
+    width: 1px; 
+    overflow: hidden; 
+    z-index: -1000; 
+}
+/* end offscreen text */
+
+/**********  CTA  ***********/
+
+/* placeholder - update these elements as needed */
+#cta {
+    position: absolute;
+    width: 113px;
+    height: 34px;
+    background-color: #0092ff;
+    border-radius: 4px;
+    left: 92px;
+    top: 167px;
+}
+
+#cta-label {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("images/cta-label.png");
+    background-repeat: no-repeat;
+    width: calc(174px/2);
+    height: calc(20px/2);
+    margin: 11px 14px;
+}
+
+</style>
+
+
+<script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+<script src="CHR1618_USOpen_ESPN_PreQ_300x250.js?1469199610860"></script>
+<!-- comment out or remove if not using AdHelper -->
+<script src="js/AdHelper.min.js"></script> 
+<!-- pull in the latest GreenSock -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+
+<script>
+
+var clickTag = "http://www.google.com",
+	adWidth,
+    adHeight,
+    adBorder,
+    preloader,
+    preloaderDiv,
+	canvas,
+    stage,
+    exportRoot;
+
+function doClickthrough(evt){
+	if(!evt || evt.type === undefined){
+		window.open(clickTag, "_blank");
+	}else if(evt.nativeEvent.which === 1){
+		console.log("event: " + evt.type);
+		window.open(clickTag, "_blank");
+	}
+}
+
+function showAd(){
+	preloader.style.display = "none";
+	canvas.style.visibility = "visible";
+    border.style.visibility = "visible";
+}
+
+function init() {
+	
+    canvas = document.getElementById("canvas");
+    adWidth = canvas.width/2;
+    adHeight = canvas.height/2;
+    adBorder = document.getElementById("border");
+    adBorder.style.width = (adWidth-2) + "px";
+    adBorder.style.height = (adHeight-2) + "px";
+    preloader = document.getElementById("plContainer");
+    preloader.style.width = (adWidth-2) + "px";
+    preloader.style.height = (adHeight-2) + "px";
+    preloaderDiv = document.querySelector("div.preloader");
+    preloaderDiv.style.height = (adHeight-2) + "px";
+    
+    
+	
+	canvas = document.getElementById("canvas");
+	images = images||{};
+	ss = ss||{};
+
+	var loader = new createjs.LoadQueue(false);
+	loader.addEventListener("fileload", handleFileLoad);
+	loader.addEventListener("complete", handleComplete);
+	loader.loadManifest(lib.properties.manifest);
+}
+
+function handleFileLoad(evt) {
+	if (evt.item.type == "image") { images[evt.item.id] = evt.result; }
+}
+
+function handleComplete(evt) {
+	// var queue = evt.target;
+	// ss["CHR1618_USOpen_ESPN_PreQ_300x250_atlas_"] = new createjs.SpriteSheet({"images": [queue.getResult("CHR1618_USOpen_ESPN_PreQ_300x250_atlas_")], "frames": [[0,240,130,129],[0,0,388,238]]});
+	exportRoot = new lib.CHR1618_USOpen_ESPN_PreQ_300x250();
+
+	stage = new createjs.Stage(canvas);
+	stage.addChild(exportRoot);
+	stage.update();
+    stage.on('complete', showReplayButton);
+
+	createjs.Ticker.setFPS(lib.properties.fps);
+	createjs.Ticker.addEventListener("tick", stage);
+    createjs.Touch.enable(stage);
+    stage.snapToPixelEnabled = true;
+    stage.enableMouseOver();
+    stage.on("stagemouseup", doClickthrough);
+
+	var ad = new createjs.AdHelper(stage)
+		//.setSleep(15,0,0)
+		.timeSync()
+		.watchFPS(15, 1)
+		.highDPI(true, 2);
+		
+	var failCount = 1;
+
+    // to test watchFPS, lower the FPS after creating the AdHelper, using the changeFPSTimer below
+	// to test timeSynch, remove watchFPS from AdHelper, and then change the FPS using the changeFPSTimer below
+	//var changeFPSTimer = window.setTimeout(changeFPS, 5000, 5);
+
+	// to test directly calling Adhelper methods, use the testMethodTimer below
+	//var testMethodTimer = window.setTimeout(testAdHelper, 5000, "showAlt", 2000);
+    
+    // changes the FPS for testing purposes
+	function changeFPS(framerate){
+		createjs.Ticker.setFPS(framerate);
+	}
+    
+    // allows direct calls of AdHelper methods for testing purposes
+	function testAdHelper(method, ms){
+		if(method === "sleep"){
+			//pass in delay
+			ad.sleep(ms);
+		}else if(method === "wake"){
+			//pass in duration
+			ad.wake(ms);
+		}else if(method === "showAlt"){
+        	createjs.AdHelper.showAltImage(canvas, "images/backup_300x250.jpg", "javascript:doClickthrough(this)", "BannerWave", "_blank");
+			//createjs.AdHelper.showAltHTML(canvas, altHTMLString);
+			//createjs.AdHelper.showAlt(canvas, altElement);
+		}
+	}
+    
+    // trace out AdHelper events for testing purposes
+	ad.on("sleep", trace);
+	ad.on("wake", trace);
+	function trace(evt) {
+		console.log("event: " + evt.type);
+	}
+}
+
+
+
+</script>
+
+</head>
+<body onload="init();">
+	<canvas id="canvas" width="600" height="500" style="background-color:#FFFFFF"></canvas>
+	<div id="border"></div>
+	<div id="plContainer">
+		<div class="preloader"><p>&nbsp;Loading Advertisement...&nbsp;</p></div>
+	</div>
+    
+     <!-- accessibility -->
+    <div class="off-screen">
+        <p>Watch the serve from one court</p>
+        <p>And the return from another.</p>
+        <p>Stream multiple matches at the same time on The Chase Review&trade; Channel on Watch ESPN.</p>
+    </div>
+
+    <!-- control buttons -->
+    <div id="controls" tabindex="0">
+        <div id="btn_pause" name="pause-button" class="image" ></div>
+        <div id="btn_play" name="play-button" class="image hidden" ></div>
+        <div id="btn_replay" name="replay-button" class="image hidden" ></div>
+    </div>
+    
+    <div id="cta" tabindex="1">
+        <div id="cta-label" class="image"></div>
+    </div>
+
+
+    <script>
+		window.addEventListener('load', showAd, false);
+    </script>
+    
+
+
+
+    <!-- 
+
+        Play/Pause, Replay and Keyboard controls 
+
+    -->
+    <script>
+
+        var controls = document.getElementById('controls'),
+            btn_play = document.getElementById('btn_play'),
+            btn_pause = document.getElementById('btn_pause'),
+            btn_replay = document.getElementById('btn_replay'),
+            cta = document.getElementById('cta'),
+            isPaused = false;
+
+        controls.addEventListener('mousedown', togglePlayPause);
+
+        function togglePlayPause(e){
+            if (e.target.id == 'btn_pause' || e.target.id == 'btn_play') {
+                doPlayPause(e);
+            }
+        }
+
+        function doPlayPause() {
+            if (isPaused === false){
+                TweenMax.set(btn_pause, {autoAlpha:0});
+                TweenMax.set(btn_play, {autoAlpha:1});
+                exportRoot.stop();
+            } else {
+                TweenMax.set(btn_pause, {autoAlpha:1});
+                TweenMax.set(btn_play, {autoAlpha:0});
+                exportRoot.play();
+            }
+            isPaused = !isPaused;
+        }
+
+
+
+
+
+        // show the cta
+        TweenMax.set(cta, {autoAlpha: 0});
+
+        function showCta() {
+            TweenMax.to(cta, 0.75, {autoAlpha: 1});
+            TweenMax.from(cta, 0.75, {scale:0.4, ease:Strong.easeInOut}, "-=0.75");
+        }
+
+        // cta event handlers
+        cta.addEventListener('mouseover', function(e) {
+            TweenMax.to(cta, 0.25, {scale:1.1, ease:Power1.easeInOut});
+        }, false);
+
+
+        cta.addEventListener('mouseout', function(e) {
+            TweenMax.to(cta, 0.25, {scale:1, ease:Power1.easeInOut});
+        }, false);
+
+        cta.addEventListener('mousedown', function(e) {
+            doClickthrough();
+        }, false);
+
+
+
+
+        // show the replay button
+        function showReplayButton() {
+            TweenMax.to([btn_pause, btn_play], 0.1, {autoAlpha: 0});
+            TweenMax.to(btn_replay, 0.1, {autoAlpha: 1});
+        }
+
+        // replay
+        btn_replay.addEventListener('mouseover', function(){
+            TweenMax.to(this, 0.3, {rotationZ: 360, transformOrigin:"50% 4.5px",
+                onComplete:function(){
+                    TweenMax.set(btn_replay, {rotationZ:0});
+                }});
+        });
+        btn_replay.addEventListener('mousedown', doReplay, false);
+        
+        function doReplay(e){
+            if (e.target.id == 'btn_replay') {
+                restartBanner();
+            }
+        }
+
+        function restartBanner() {
+            TweenMax.set(btn_pause, {backgroundPosition:'0px -10px'});
+            TweenMax.to(btn_pause, 0.1, {autoAlpha: 1});
+            TweenMax.to([btn_replay, cta], 0.1, {autoAlpha: 0});
+            exportRoot.gotoAndPlay(0);
+        }
+
+
+        // respond to keyboard events
+        function keyboardEventHandler(e){
+            var keyCode = e.which || e.keyCode;
+            
+            if (keyCode == 32) {
+                
+                switch(document.activeElement.id) {
+                    // we're on the pause button - play or pause the banner
+                    case 'hit':
+                        doClickthrough();
+                        break;
+                    case 'controls':
+                        if (exportRoot.complete === false) {
+                            doPlayPause();
+                        } else if (exportRoot.complete === true) {
+                            restartBanner();
+                        }
+                        break;
+
+                    case 'cta':
+                        doClickthrough();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+        
+        
+
+        document.addEventListener('keydown', keyboardEventHandler, false);
+
+    </script>
+
+
+
+
+
+
+</body>
+</html>

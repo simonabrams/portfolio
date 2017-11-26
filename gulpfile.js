@@ -23,7 +23,7 @@ const config = {
         match: ['./app/**/*.hbs'],
         tasks: ['templates']
     }
-}
+};
 
 gulp.task('sass', function(){
     return gulp.src('./app/scss/**/*.scss')
@@ -31,7 +31,7 @@ gulp.task('sass', function(){
         .pipe(gulp.dest('./app/css'))
         .pipe(browserSync.reload({
             stream: true
-        }))
+        }));
 });
 
 gulp.task('browserSync', function(){
@@ -50,7 +50,7 @@ gulp.task('useref', function(){
         .pipe(gulpIf('*.js', uglify()))
         // minify css files
         .pipe(gulpIf('*.css', cssnano()))
-        .pipe(gulp.dest('dist'))
+        .pipe(gulp.dest(config.dest));
 });
 
 //  handlebars
@@ -59,7 +59,7 @@ gulp.task('templates', function(){
         options = {
             ignorePartials: true,
             batch: [`${config.src}/partials`]
-        }
+        };
 
     return gulp.src(`${config.src}/pages/*.hbs`)
         .pipe(handlebars(templateData, options))
@@ -73,17 +73,17 @@ gulp.task('images', function(){
         .pipe(imagemin({
 
         }))
-        .pipe(gulp.dest('dist/images'))
+        .pipe(gulp.dest(config.dest + '/images'));
 });
 
 // copy fonts
 gulp.task('fonts', function(){
     return gulp.src('app/fonts/**/*')
-        .pipe(gulp.dest('dist/fonts'))
+        .pipe(gulp.dest( config.dest + '/fonts'));
 });
 
 gulp.task('clean:dist', function(){
-    return del.sync('dist');
+    return del.sync( config.dest );
 });
 
 gulp.task('watch', ['browserSync', 'sass'], function(){
@@ -95,9 +95,9 @@ gulp.task('watch', ['browserSync', 'sass'], function(){
 });
 
 gulp.task('build', function(callback){
-    runSequence('clean:dist', ['sass', 'templates', 'useref', 'images', 'fonts'], callback)
+    runSequence('clean:dist', ['sass', 'templates', 'useref', 'images', 'fonts'], callback);
 });
 
 gulp.task('default', function(callback){
-    runSequence(['sass', 'templates', 'browserSync', 'watch'], callback)
-})
+    runSequence(['sass', 'templates', 'browserSync', 'watch'], callback);
+});

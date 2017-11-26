@@ -1,0 +1,196 @@
+/* defaults */
+*, html {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0; }
+
+/* layout */
+#wrapper {
+  width: 300px;
+  height: 600px;
+  border: 1px solid #c5c5c5;
+  background-color: #f4f4f4;
+  overflow: hidden;
+  cursor: pointer; }
+
+#banner {
+  width: 300px;
+  height: 600px;
+  position: relative;
+  visibility: hidden;
+  overflow: hidden; }
+
+#logo {
+  visibility: hidden; }
+
+.droidBot {
+  opacity: 1; }
+
+.arm {
+  -ms-transform-origin: 12px 10px;
+  -webkit-transform-origin: 12px 10px;
+  transform-origin: 12px 10px; }
+
+/* dots */
+#dots {
+  position: absolute;
+  left: 132px;
+  top: 23px;
+  z-index: 5; }
+  #dots div {
+    height: 6px;
+    width: 6px;
+    top: 5px;
+    border-radius: 5px;
+    visibility: hidden;
+    position: absolute; }
+
+#blue {
+  background-color: #0086f8;
+  left: 0px; }
+
+#red {
+  background-color: #ff4131;
+  left: 10px; }
+
+#yellow {
+  background-color: #ffbc00;
+  left: 20px; }
+
+#green {
+  background-color: #00aa4a;
+  left: 30px; }
+
+/* headlines */
+#headline1 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 300px;
+  height: 600px;
+  background: url("text1.svg") no-repeat; }
+
+#headline2 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 300px;
+  height: 600px;
+  background: url("text2.svg") no-repeat; }
+
+/* cards */
+.phone-container {
+  position: absolute;
+  width: 300px;
+  height: 600px;
+  left: 0;
+  top: 0; }
+
+.phone {
+  background: url("phone.jpg") no-repeat;
+  width: 269px;
+  height: 327px;
+  background-size: cover;
+  position: absolute;
+  left: -86px;
+  top: 211px; }
+
+.cards-container {
+  position: absolute;
+  width: 300px;
+  height: 600px;
+  z-index: 10;
+  transform: rotateX(0) rotateY(0) rotateZ(0) translateX(0) translateY(0) translateZ(0); }
+  .cards-container img,
+  .cards-container .shadow,
+  .cards-container .fx {
+    position: absolute;
+    visibility: hidden; }
+
+.card {
+  padding: 0;
+  position: absolute;
+  -webkit-transform: rotateX(0) rotateY(0) rotateZ(0) translateX(0) translateY(0) translateZ(0);
+  -ms-transform: rotateX(0) rotateY(0) rotateZ(0) translateX(0) translateY(0) translateZ(0);
+  -moz-transform: rotateX(0) rotateY(0) rotateZ(0) translateX(0) translateY(0) translateZ(0);
+  -o-transform: rotateX(0) rotateY(0) rotateZ(0) translateX(0) translateY(0) translateZ(0);
+  transform: rotateX(0) rotateY(0) rotateZ(0) translateX(0) translateY(0) translateZ(0);
+  left: 0;
+  top: 0; }
+
+#card1Shadow {
+  position: absolute;
+  z-index: 14;
+  background: url("card1-shadow.png") no-repeat;
+  background-size: cover;
+  width: 199px;
+  height: 217px;
+  left: 49px;
+  top: 270px;
+  visibility: hidden; }
+
+.card1 {
+  z-index: 15;
+  background: url("card1.png") no-repeat;
+  background-size: cover;
+  width: 199px;
+  height: 217px; }
+
+#card1Fx {
+  position: absolute;
+  background: url("card1-fx.png") no-repeat;
+  background-size: cover;
+  width: 199px;
+  height: 217px; }
+
+.card2 {
+  z-index: 16;
+  background: url("card2.png") no-repeat;
+  background-size: cover;
+  width: 191px;
+  height: 187px; }
+
+#card2Fx {
+  position: absolute;
+  background: url("card2-fx.png") no-repeat;
+  background-size: cover;
+  left: 0;
+  top: 0;
+  width: 191px;
+  height: 187px; }
+
+.card3 {
+  z-index: 17;
+  background: url("card3.png") no-repeat;
+  background-size: cover;
+  width: 229px;
+  height: 179px; }
+
+#cta-container {
+  position: absolute;
+  top: 101px;
+  left: 105px;
+  visibility: hidden;
+  z-index: 180; }
+
+#ctaSVG {
+  position: absolute;
+  z-index: 15; }
+
+#ctaBox {
+  position: absolute;
+  width: 92px;
+  height: 26px;
+  background-color: #79c259;
+  z-index: 0; }
+
+#andy {
+  position: absolute;
+  left: 0;
+  top: 0; }
+
+:focus {
+  outline: none; }
+
+::-mos-focus-inner {
+  border: 0; }

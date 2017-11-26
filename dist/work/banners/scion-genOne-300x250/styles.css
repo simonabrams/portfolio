@@ -1,0 +1,419 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+}
+.wrapper {
+    width: 300px;
+    height: 250px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000;
+    background-color: #fff;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    cursor: pointer;
+}
+
+#banner {
+    width: 300px;
+    height: 250px;
+    position: absolute;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+
+
+/* logos */
+
+.logo-big, .logo-small {
+    position: absolute;
+    background: url('logo-scion.svg') no-repeat;
+}
+
+.logo-big {
+    width: 80px;
+    height: 54px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 98px;
+}
+
+.logo-small {
+    width: 52px;
+    height: 37px;
+    left: 235px;
+    top: 205px;
+}
+
+#hashtag {
+    position: absolute;
+    background: url('txt-hashtag.svg') no-repeat;
+    width: 49px;
+    height: 20px;
+    left: 12px;
+    top: 223px;
+    opacity: 0.4;
+}
+
+#hashtag-grey {
+    position: absolute;
+    background: url('txt-hashtag-grey.svg') no-repeat;
+    width: 49px;
+    height: 20px;
+    left: 12px;
+    top: 223px;
+}
+
+
+
+/* panels */
+.white, .blue, .red {
+    position: absolute;
+    width: 400px;
+    height: 250px;
+    /*height: 100%;*/
+    transform: skew(-20deg);
+    margin-left: -200px;
+    left: 50%;
+}
+
+
+.blue {
+    /*background-color: #1d4e8f;*/
+    background: #1d4e8f; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  #2b6bce 0%, #1d4e8f 80%); /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse cover,  #2b6bce 0%,#1d4e8f 80%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center,  #2b6bce 0%,#1d4e8f 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2b6bce', endColorstr='#1d4e8f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+.red {
+    /*background-color: #d9272e;*/
+    background: #d9272e; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  #fe0405 0%, #d9272e 80%); /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse cover,  #fe0405 0%,#d9272e 80%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center,  #fe0405 0%,#d9272e 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fe0405', endColorstr='#d9272e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.white {
+    /*background-color: #d9272e;*/
+    background: #d9272e; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  white 0%, #e6e6e6 80%); /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse cover,  white 0%,#e6e6e6 80%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center,  white 0%,#e6e6e6 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='white', endColorstr='#e6e6e6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+
+
+/* text */
+.clipped {
+  clip: rect(0px, 480px, 250px, 0px);
+}
+
+#text1, #text2, #text3, #text4, #text5 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+#mask1, #mask2, #mask3, #mask4 {
+    width: 600px;
+    height: 400px;
+    position: absolute;
+    overflow: hidden;
+}
+#text1 {
+    background: url('txt1.svg') no-repeat;
+    width: 221px;
+    height: 38px;
+    top: 46px;
+}
+
+#text2 {
+    background: url('txt2.svg') no-repeat;
+    width: 184px;
+    height: 54px;
+    top: 29px;
+    left: -270px;
+}
+
+#text3 {
+    background: url('txt3.svg') no-repeat;
+    width: 142px;
+    height: 13px;
+    top: 48px;
+}
+
+#text4 {
+    background: url('txt4.svg') no-repeat;
+    width: 154px;
+    height: 13px;
+    top: 48px;
+}
+
+#text5 {
+    background: url('txt5.svg') no-repeat;
+    width: 151px;
+    height: 32px;
+    top: 96px;
+}
+
+
+/* cars */
+.car-body, .wheel, .shadow, #car1, #car2, #car3, #car4, #car5 {
+    background: url('sprites.png') no-repeat;
+}
+
+/* iM */
+#iM {
+    position: absolute;
+    width: 288px;
+    height: 94px;
+    left: 6px;
+    top: 94px;
+}
+#iM .car-body {
+    width: 288px;
+    height: 94px;
+    background-position: 0 -200px;
+}
+
+#iM .wheel {
+    position: absolute;
+    background-position: -288px -200px;
+    width: 45px;
+    height: 45px;
+    top: 57px;
+}
+
+#iM .rear {
+    left: 29px;
+}
+#iM .front {
+    left: 211px;
+}
+
+.shadow {
+    position: absolute;
+    background-position: 0 0;
+    width: 295px;
+    height: 15px;
+    left: 0;
+    top: 88px;
+    opacity: 0.6;
+    background-blend-mode: multiply;
+}
+
+
+
+/* frs */
+#frs {
+    /*visibility: hidden;*/
+    position: absolute;
+    width: 282px;
+    height: 89px;
+    left: 6px;
+    top:100px;
+}
+#frs .car-body {
+    width: 282px;
+    height: 89px;
+    background-position:  0 -15px;
+}
+
+#frs .wheel {
+    position: absolute;
+    background-position: -325px -15px   ;
+    width: 45px;
+    height: 45px;
+    top: 46px;
+}
+
+#frs .rear {
+    left: 25px;
+}
+#frs .front {
+    left: 205px;
+}
+
+#frs .shadow {
+    top: 77px;
+}
+
+
+/* iA*/
+
+#iA {
+    position: absolute;
+    width: 2911px;
+    height: 100px;
+    left: 6px;
+    top: 85px;
+}
+#iA .car-body {
+    width: 291px;
+    height: 99px;
+    background-position: 0 -102px;
+}
+
+#iA .wheel {
+    position: absolute;
+    background-position: -288px -200px;
+    width: 45px;
+    height: 45px;
+    top: 57px;
+}
+
+#iA .rear {
+    left: 37px;
+}
+#iA .front {
+    left: 218px;
+}
+
+/* end frame */
+
+#endframe {
+    position: absolute;
+    width: 300px;
+    height: 250px;
+}
+
+.cta {
+    position: absolute;
+    width: 119px;
+    height: 37px;
+    left: 11px;
+    top: 205px;
+    background-color: #1d4e8f;
+    border-radius: 4px;
+}
+.cta-label {
+    position: relative;
+    background: url('txt-cta.svg') no-repeat;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 13px;
+    width: 89px;
+    height: 13px;
+}
+
+
+
+/* GenOne logo */
+
+.genone {
+    position: absolute;
+    background: url('logo-genone.svg') no-repeat;
+    width: 147px;
+    height: 77px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 31px;
+}
+
+
+
+/* disclaimer */
+
+#disclaimer-btn {
+    position: absolute;
+    font-family: sans-serif;
+    font-size: 0.4375em; /* 7pt */
+    text-decoration: underline;
+    color: #4f4f4f;
+    left: 180px;
+    top: 221px;
+    z-index: 1000;
+}
+
+
+
+#disclaimer-panel{
+    position: absolute;
+    background-color: #ccc;
+    width: 300px;
+    height: 100px;
+    top: 250px;
+    z-index: 2000;
+}
+
+#disclaimer-panel p {
+    margin: 0;
+    padding: 5px 5px 5px 15px;
+    font-family: sans-serif;
+    font-size: 8px;
+}
+#disclaimer-x {
+    width: 20px;
+    font-family: sans-serif;
+    font-size: 8px;
+    font-weight: bolder;
+    padding: 5px;
+}
+
+
+/* scion family */
+
+#car1, #car2, #car3, #car4, #car5 {
+    /*visibility: hidden;*/
+}
+
+.car-wrapper {
+    width: 300px;
+    height: 250px;
+    position: absolute;
+}
+
+#car1 {
+    position: absolute;
+    background-position: -377px 0;
+    width: 71px;
+    height: 36px;
+    left: 7px;
+    top: 121px;
+}
+
+#car2 {
+    position: absolute;
+    background-position: -377px -36px;
+    width: 75px;
+    height: 34px;
+    left: 44px;
+    top: 138px;
+}
+
+#car3 {
+    position: absolute;
+    background-position: -377px -70px;
+    width: 77px;
+    height: 49px;
+    left: 87px;
+    top: 147px;
+}
+
+#car4 {
+    position: absolute;
+    background-position: -377px -119px;
+    width: 82px;
+    height: 49px;
+    left: 163px;
+    top: 145px;
+}
+
+#car5 {
+    position: absolute;
+    background-position: -377px -168px;
+    width: 81px;
+    height: 38px;
+    left: 204px;
+    top: 135px;
+}

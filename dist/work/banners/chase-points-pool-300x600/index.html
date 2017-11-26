@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="ad.size" content="width=300,height=600">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Droga5 Banner | Chase Sapphire Reserve</title>
+
+        <script>
+            var vendor = "dfa",
+            clickTag = "http://www.google.com";
+        </script>
+        <style>
+            /* offscreen text for screen readers - accessibility requirement */
+            .off-screen { 
+                position: absolute; 
+                clip: rect(1px 1px 1px 1px); /* IE6, IE7 */ 
+                clip: rect(1px, 1px, 1px, 1px); 
+                padding: 0; 
+                border: 0; 
+                height: 1px; 
+                width: 1px; 
+                overflow: hidden; 
+                z-index: -1000; 
+            }
+            /* end offscreen text */
+        </style>
+        
+    </head>
+    <body onload="checkInit()">
+        
+
+
+        <div id="banner" class="dimensions hidden">
+            
+            <div class="border"></div>
+            
+            <!-- banner stuff here -->
+
+            <!-- accessibility text -->
+            <div class="off-screen">
+                <p>Introducing what's next in travel. Chase Sapphire Reserve(SM).</p>
+                <p>Travel's changing. Carry the only card designed to stay ahead.</p>
+            </div>
+
+
+            <div class="bg-elements dimensions">
+                <div class="bg image"></div>
+                <div class="bg-house image"></div>
+                <div class="bg-pool image"></div>
+            </div>
+            <div class="comp dimensions"></div>
+
+            <div class="headline headline1b dimensions image hidden"></div>
+            <div class="headline headline1a dimensions image hidden"></div>
+            
+            <div class="footer"></div>
+            <div class="logo-syc hidden"></div>
+            <div class="logo-sapphire hidden"></div>
+
+            <div class="card-footer dimensions hidden">
+                <div class="card-facets-lower dimensions image"></div>
+                <div class="card image"></div>
+            </div>
+
+
+            <div class="card-main dimensions hidden">
+                <div class="facets-main dimensions image"></div>
+                <div class="card image"></div>
+            </div>
+
+            <div class="headline headline2 dimensions image hidden"></div>
+            <div class="headline headline3 dimensions image hidden"></div>
+            
+            
+
+            <!-- clicktag -->
+            <div id="hit" tabindex="0" class="dimensions" onclick="vendorClickHandler(event)" ></div>
+
+            <!-- control buttons -->
+            <div id="controls" tabindex="0">
+                <div id="btn_pause" name="pause-button" class="image" aria-label="Pause Button" role="button" ></div>
+                <div id="btn_play" name="play-button" class="image hidden"  aria-label="Play Button" role="button"></div>
+                <div id="btn_replay" name="replay-button" class="image hidden" aria-label="Replay Button" role="button" ></div>
+            </div>
+            
+            <div id="cta" role="button" aria-label="Clickthrough" tabindex="1" class="hidden"></div>
+            
+            <!-- Optional loader image/message -->
+            <div id="loader" class="dimensions"></div>
+
+        </div>
+        
+
+<script>
+    var counter = 0,
+        $loader = document.getElementById("loader");
+
+    function checkInit()
+    {
+        // SIZMEK LOAD HANDLER
+        if(vendor=="sizmek")
+        {
+            if (!EB.isInitialized())
+            {
+              EB.addEventListener(EBG.EventName.EB_INITIALIZED, wait);
+              // checks if the EB object is initialized, if no - launches the function "wait" which loops back to the function "checkInit" until the EB object is initialized. if it is done initializing - will run the "onInit" function.
+            }
+
+            else
+            {
+              loadScripts();
+            }
+        }
+
+        // DOUBLECLICK LOAD/VISIBILITY HANDLER
+        else if(vendor=="doubleclick")
+        {
+            if (Enabler.isPageLoaded())
+            {
+                function pageLoadedHandler() {
+                  if (Enabler.isVisible()) {
+                    adVisibilityHandler();
+                  } else {
+                    Enabler.addEventListener(studio.events.StudioEvent.VISIBLE, adVisibilityHandler);
+                  }
+                }
+
+                function adVisibilityHandler() {
+                    loadScripts();
+                }
+            }
+
+            else
+            {
+                Enabler.addEventListener(studio.events.StudioEvent.PAGE_LOADED, loadScripts);
+            }
+        }
+
+        else if(vendor == "dfa" || vendor == "dcm" || vendor == "atlas")
+        {
+            loadScripts();
+        }
+
+    }
+
+    //makes sure libraries and styles don't load until after vendor's init loaded first
+    function loadScripts()
+    {
+      loadJsCssFile("css/styles.css", trackProgress);
+
+      //CDN hosted GSAP use unless vendor specifies local versions (ex. Atlas)
+      loadJsCssFile("https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js", trackProgress);
+
+      // or use local version of GSAP below
+      // loadJsCssFile("js/TweenMax.min.js", trackProgress);
+
+    }
+
+
+    //counter value reflects the number of scripts loaded in loadScripts()
+    function trackProgress()
+    {
+      counter++;
+        //'counter' = the number of scripts loaded in loadScripts()
+        if(counter == 2)
+        {
+            // keep console.log commented out for Atlas, it will break the ad if uncommented
+            // console.log('ELEMENTS SET AND LOADED');
+            loadNext();
+        }
+    }
+
+
+    //once above scripts are loaded, local animaton can load/execute
+    function loadNext()
+    {
+        // keep console.log commented out for Atlas, it will break the ad if uncommented
+        // console.log("meow");
+        loadJsCssFile("js/scripts.js", allLoaded);
+    }
+
+    function allLoaded() {
+        $loader.style.display = "none";
+    }
+
+    function vendorClickHandler(event)
+    {
+        switch (vendor) {
+            case "doubleclick":
+                Enabler.exit('Background Exit'); break;
+            case "sizmek":
+                EB.clickthrough(); break;
+            case "dcm":
+                ExitApi.exit(); break;
+            case "dfa":
+                javascript:window.open(window.clickTag, "_blank"); break;
+            case "atlas":
+                javascript:window.open("{{PUB_CLICKTHROUGH}}", "_blank"); break;
+        }
+    }
+
+    //DYNAMICALLY LOAD JS/CSS + CALLBACK
+    //Source: http://www.javascriptkit.com/javatutors/loadjavascriptcss.shtml
+    function loadJsCssFile(filename,func)
+    {
+        var filetype = filename.substring(filename.lastIndexOf('.')+1);
+
+        if(filetype == 'js')
+        {
+            var fileref = document.createElement('script');
+            fileref.setAttribute('type','text/javascript');
+            fileref.setAttribute('src', filename);
+        }
+
+        else if(filetype == 'css')
+        {
+            var fileref = document.createElement('link');
+            fileref.setAttribute('rel','stylesheet');
+            fileref.setAttribute('type', 'text/css');
+            fileref.setAttribute('href', filename);
+        }
+
+        if(typeof fileref!= 'undefined')
+        {
+            if(func)
+            {
+                if(fileref.readyState){//IE 8, 9, 10
+                    fileref.onreadystatechange = fileref.onload = function()
+                    {
+                        if(fileref.readyState == 'loaded' || fileref.readyState == 'complete')
+                        {
+                            fileref.onreadystatechange = null;
+                            func();
+                        }
+                    };
+                }
+
+                else
+                {//other browsers
+                    fileref.onload = function ()
+                    {
+                      func();
+                    }
+                }
+            }
+
+        document.getElementsByTagName('head')[0].appendChild(fileref);
+
+        }
+    }
+
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    </body>
+</html>
+</html>

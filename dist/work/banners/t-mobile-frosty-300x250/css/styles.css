@@ -1,0 +1,321 @@
+/*
+
+    Droga5 Banner CSS
+    Simon Abrams
+    --------------------
+    sabrams@droga5.com
+
+*/
+
+
+
+
+/**********  Utilities  ***********/
+
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box; 
+  -moz-box-sizing: border-box; 
+  box-sizing: border-box;
+}
+
+body {
+    background-color: #fff;
+    padding:0; margin:0;
+}
+
+
+/* set the dimensions of your banner here */
+.dimensions {
+    width: 300px;
+    height: 250px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/*  apply this class to retina sized graphics
+    be sure to change the dimensions to double the width and height of your banner's actrual dimensions */
+.retina {
+    background-size: calc(600px/2) calc(500px/2);
+    width:calc(600px/2);
+    height:calc(500px/2);
+}
+
+/* centers elements horizontally */
+.center-horiz {
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* centers elements vertically */
+.center-vert {
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+/* centers elements vertically */
+.center {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+
+
+/*  apply this to initialize elements as hidden until they are needed.
+    use 'autoAlpha:1' in GSAP to show hidden elements */
+.hidden {
+    visibility: hidden;
+}
+
+.comp {
+    /* link to comps here. */
+    // background-image: url('../images/comp.jpg');
+    opacity: 0.2;
+}
+
+
+div {
+    background-repeat: no-repeat;
+    display: block;
+    position: absolute;
+    overflow: hidden;
+}
+
+
+/* main container element for banner */
+#banner {
+    position: absolute;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: white;
+    transform: translate3d(0px, 0px, 0px);
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#banner .border {
+    border: 1px solid rgb(197, 197, 197);
+    z-index: 100;
+    border: 1px solid rgba(0, 0, 0, 0.7);
+    width: 300px;
+    height: 250px;
+    pointer-events: none;
+}
+
+/* sets up main stage clickable area */
+#hit {
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+}
+
+
+
+/**********  Banner Elements/Layout  ***********/
+
+
+#background {
+    background-color: #e8e8e8;
+}
+
+.magenta { 
+  background-color: #e20074;
+}
+
+.tmo {
+    background-image: url('../images/headline.png');
+    background-repeat: no-repeat;
+    width: calc(478px/2);
+    height: 83px;
+    background-size: cover;
+}
+
+/* placeholder - replace this with the styling for your headlines. duplicate as needed */
+.text {
+    background-size: cover;
+}
+#text1 {
+    width: calc(342px/2);
+    height: calc(62px/2);
+    left: 50px;
+    top: 90px; 
+    background-image: url('../images/text1.png');
+}
+#text2 {
+    width: calc(458px/2);
+    height: calc(61px/2);
+    left: 28px;
+    top: 128px; 
+    background-image: url('../images/text2.png');
+}
+#text3 {
+    width: calc(336px/2);
+    height: calc(64px/2);
+    left: 31px;
+    top: 75px; 
+    background-image: url('../images/text3.png');
+}
+#text4 {
+    width: calc(394px/2);
+    height: calc(64px/2);
+    left: 74px;
+    top: 114px; 
+    background-image: url('../images/text4.png');
+}
+
+#image {
+    background-image: url("../images/image.jpg");
+}
+
+// #endFrameBg {
+//     background-color: #e20074;
+//     width: 100%;
+//     height: 100%;
+// }
+
+#textContainer,
+#buttonContainer {
+  width: 300px;
+  height: 250px;
+  position: absolute;
+/*   background-color: green; */
+}
+
+#headline {
+    position: relative;
+    background-image: url('../images/headline.png');
+    width: calc(478px/2);
+    height: 83px;
+    background-size: cover;
+    top: 48px;
+    left: 36px;
+}
+#subhead {
+    position: relative;
+    background-image: url('../images/headline.png');
+    width: calc(478px/2);
+    height: 16px;
+    background-size: cover;
+    top: 55px;
+    left: 34px;
+    background-position: 0 -90px;
+}
+
+#button {
+    position: relative;
+    background-image: url('../images/cta.svg');
+    width: 228px;
+    height: 22px;
+    top: 162px;
+    background-size: contain;
+}
+
+
+.textMask {
+  clip: rect(10px, 290px, 165px, 10px);
+}
+
+.buttonMask { 
+  clip: rect(155px, 290px, 240px, 10px);
+}
+
+
+
+#logo {
+    background-image: url('../images/logo.svg');
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 97px;
+    height: 16px;
+    background-size: 97px 16px;
+    left: 24px;
+    top: 14px;
+}
+
+#logo-wendys {
+    background-image: url('../images/logo-wendys.svg');
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 61px;
+    height: 57px;
+    background-size: 61px 57px;
+    top: 154px;
+}
+
+
+
+/**********  CTA  ***********/
+
+/* placeholder - update these elements as needed */
+/*#cta {
+    width: 91px;
+    height: 29px;
+    background-color: #2ba854;
+    border-radius: 4px;
+    left: 203px;
+    top: 215px;
+}
+
+#cta-label {
+    display: block;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-size: 0.6em;
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+    color: white;
+}*/
+
+
+/**********  REMOVE - SLIDER  ***********/
+#slider_bar {
+  position:absolute;
+  width: 300px;
+  height:40px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  margin-bottom: 120px;
+}
+
+#ctrl_slider {
+    background: rgba(80,80,80,0.3);
+    border:1px solid rgba(102,102,102,0.5);
+}
+
+.progress {
+    font-family: sans-serif;
+    position: relative;
+    float: right;
+    margin-top: 10px;
+}
+
+/**********  END REMOVE  ***********/
+
+
+
+
+
+
+
+
+
+
+
+
+
+

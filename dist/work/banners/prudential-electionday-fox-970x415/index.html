@@ -1,0 +1,363 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+    <script>
+    //Prevent console.log from causing errors in IE
+    if (!window.console) {
+        window.console = {};
+    }
+    if (!console.log) {
+        console.log = function() {};
+    }
+    var vendor = "sizmek"
+    </script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script>
+    EBModulesToLoad = ['EBCMD'];
+    </script>
+    <script type="text/javascript" src="http://secure-ds.serving-sys.com/BurstingScript/EBLoader.js"></script>
+    <script type="text/javascript" src="http://secure-ds.serving-sys.com/BurstingRes/CustomScripts/html5_auto_expand_frequency_capping_v1.js"></script>
+    <script type="text/javascript" src="scripts/pushdown_banner.js"></script>
+</head>
+
+<body onload="initEB()">
+    <div id="container">
+        <div id="ad" class="collapsed">
+            <div id="banner">
+                <div class="headline"></div>
+                <div class="logo"><img src="images/logo-pruGold.png" alt="Prudential Logo" width="127" height="38"></div>
+                <div id="hitCollapsed" onclick="EB.clickthrough();"></div>
+                <button id="clickthroughButton" class='cta'>
+                    <div class="labelMask">
+                        <div class="buttonLabel"></div>
+                    </div>
+                    <div class="buttonArrow"></div>
+                </button>
+                <div class="replay" onclick="handleExpandButtonClick()"></div>
+            </div>
+
+            <div id="expansion">
+                <div class="bg"></div>
+                <div class="logo"><img src="images/logo-pru.png" alt="Prudential Logo" width="292" height="88"></div>
+                <div class="balloon"></div>
+                <div class="headline1"></div>
+                <div class="headline2"></div>
+                
+                
+                <button id="clickthroughButton" class="button clickthrough">
+                    <div class='cta-label-mask'>
+                        <div class="cta-label"></div>
+                    </div>
+                    <div class="cta-arrow"></div>
+                </button>
+               
+                <div id="hit" onclick="handleClickthroughButtonClick()"></div>
+
+                <button id="closeButton" class="button close" onclick="collapse()"></button>
+                
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+    <script>
+    var $cta = byId("cta"),
+        $ctaInner = byClassAll("ctaInner"),
+        $hit = byId("hit"),
+        $replayBtn = byClass("replay"),
+	    t = TweenMax,
+        mainTl = new TimelineMax();
+
+    function initEB() {
+        if (!EB.isInitialized()) {
+            EB.addEventListener(EBG.EventName.EB_INITIALIZED, startAd);
+        } else {
+            startAd();
+        }
+    }
+
+
+    var adDiv;
+    var bannerDiv;
+    var expansionDiv;
+    var expandDuration = 500;
+    var collapseDuration = expandDuration;
+    var pushdownSettings = {
+        pushDown: true,
+        expandDuration: expandDuration || 0,
+        collapseDuration: collapseDuration || 0
+    };
+
+    function startAd() {
+        EB.initExpansionParams(0, 0, 970, 415);
+        EB._sendMessage("resizecontainer", pushdownSettings);
+        adDiv = document.getElementById("ad");
+        bannerDiv = document.getElementById("banner");
+        expansionDiv = document.getElementById("expansion");
+        bannerDiv.style.visibility = "visible";
+        setUpAutoExpandFrequencyCapping();
+
+        // add event listeners
+       	setInteractions();
+
+        animate();
+
+    }
+
+    function setUpAutoExpandFrequencyCapping() {
+        var autoExpandSettings = {
+            isEnabled: true,
+            frequency: EB.autoExpandFrequencyCapping.Frequencies.SESSION,
+            expansionsPerPeriod: 20,
+            timeUntilAutoCollapse: 8000
+        };
+        var beforeAutoExpandSubscription = new EB.autoExpandFrequencyCapping.EventSubscription({
+            eventName: EB.autoExpandFrequencyCapping.Events.AUTO_EXPAND,
+            callback: switchToExpandedGraphics,
+            callbackBinding: this,
+            timing: EB.autoExpandFrequencyCapping.EventTiming.BEFORE
+        });
+        var afterAutoCollapseSubscription = new EB.autoExpandFrequencyCapping.EventSubscription({
+            eventName: EB.autoExpandFrequencyCapping.Events.AUTO_COLLAPSE,
+            callback: doCollapseBehavior,
+            callbackBinding: this,
+            timing: EB.autoExpandFrequencyCapping.EventTiming.AFTER
+        });
+
+        EB.autoExpandFrequencyCapping.subscribeToEvent(beforeAutoExpandSubscription);
+        EB.autoExpandFrequencyCapping.subscribeToEvent(afterAutoCollapseSubscription);
+        EB.autoExpandFrequencyCapping.initialize(autoExpandSettings);
+    }
+
+    function expand() {
+        switchToExpandedGraphics();
+        EB.expand();
+    }
+
+    function switchToExpandedGraphics() {
+        expansionDiv.style.visibility = "visible";
+        removeClass(adDiv, "collapsed");
+        setClass(adDiv, "expanded");
+    }
+
+    function collapse() {
+        EB.collapse();
+        EB.autoExpandFrequencyCapping.cancelAutoCollapse();
+        doCollapseBehavior();
+    }
+
+    function doCollapseBehavior() {
+        if (!window.hasOwnProperty("collapseDuration") || collapseDuration <= 0) {
+            switchToCollapsedGraphics();
+        } else {
+            setTimeout(switchToCollapsedGraphics, collapseDuration + 100);
+        }
+    }
+
+    function switchToCollapsedGraphics() {
+        expansionDiv.style.visibility = "hidden";
+        t.set('.balloon', {y:430})
+        removeClass(adDiv, "expanded");
+        setClass(adDiv, "collapsed");
+
+        // animate cta in the collapsed state
+        animateCTA();
+    }
+    
+    function killAutoCollapse() {
+        EB.autoExpandFrequencyCapping.cancelAutoCollapse();
+    }
+
+    function handleExpandButtonClick() {
+    	mainTl.restart();
+        expand();
+    }
+
+    function handleCloseButtonClick() {
+        collapse();
+    }
+
+    function handleClickthroughButtonClick() {
+        EB.clickthrough();
+    }
+
+
+    /**
+     Animation
+    */
+
+    function animate() {
+
+        mainTl
+        	.add('start', 0.1)
+            .add('balloon', 0.2)
+            .add(function() {
+                var _b = new TimelineMax();
+                _b.timeScale(1.275);
+                var speed = 8;
+
+                // animate balloon float
+                _b
+                    .add(function() {
+                        TweenMax.to('.balloon', speed, {
+                            rotation: '+=' + getRandomInt(-15, 20),
+                            repeat: -1,
+                            repeatDelay: 0.07
+                        });
+                    })
+                    .set('.balloon', {
+                        autoAlpha: 0.94
+                    })
+                    .fromTo('.balloon', 2.8, {
+                        y: 430
+                    }, {
+                        y: 0,
+                        ease: Power3.easeIn
+                    })
+
+                .to('.balloon', 1.2, {
+                        y: 75,
+                        ease: Circ.easeOut
+                    })
+                    .to('.balloon', 1, {
+                        y: -8,
+                        ease: Power2.easeIn
+                    })
+
+                .to('.balloon', 0.6, {
+                        y: 15,
+                        ease: Circ.easeOut
+                    })
+                    .to('.balloon', 0.4, {
+                        y: -2,
+                        ease: Circ.easeIn
+                    })
+                    .to('.balloon', 0.5, {
+                        y: 0,
+                        ease: Linear.easeNone,
+                        onComplete: function() {
+                            TweenMax.to('.balloon', speed * 0.3, {
+                                y: '+=' + getRandomInt(-15, 15),
+                                repeat: -1,
+                                repeatDelay: 0.05,
+                                yoyo: true
+                            })
+                        }
+                    })
+
+                // add side to side drift and rotation
+                TweenMax.to('.balloon', speed * 0.3, {
+                    x: '+=' + getRandomInt(-5, 10),
+                    rotation: '+=' + getRandomInt(-5, 5),
+                    ease: Sine.easeInOut,
+                    delay: 2.5,
+                    repeat: -1,
+                    repeatDelay: 0.07,
+                    yoyo: true
+                });
+
+                return _b;
+
+            }, 'balloon')
+
+        // headline out
+        .add('h1Out', 5.4)
+            .to('.headline1', 0.25, {
+                alpha: 0,
+                ease: Power3.easeOut
+            }, 'h1Out')
+
+        // endframe
+        .add('h2In', 5.8)
+            .to('.headline2', 0.6, {
+                autoAlpha: 1,
+                ease: Power3.easeOut
+            }, 'h2In')
+            .to('.cta-arrow', 0.25, {
+                autoAlpha: 1
+            }, 'h2In')
+            .set('.cta-label', {
+                alpha: 1
+            }, 'h2In+=0.2')
+            .from('.cta-label', 0.5, {
+                x: 200,
+                ease: Power3.easeInOut
+            }, 'h2In+=0.2')
+
+
+        }
+
+    function animateCTA() {
+        var ctaTl = new TimelineMax();
+        ctaTl
+            .to('#banner .buttonArrow', 0.1, {
+                autoAlpha: 1,
+                ease: Power3.easeOut
+            }, '+=0.5')
+            .from('#banner .buttonLabel', 0.25, {
+                x: 100,
+                ease: Power3.easeInOut
+            });
+    }
+
+
+
+
+    /**
+     * Utils
+     */
+
+
+    function byId(id) {
+        return document.getElementById(id);
+    }
+
+    function byClass(name) {
+        return document.getElementsByClassName(name)[0];
+    }
+
+    function byClassAll(name) {
+        return document.getElementsByClassName(name);
+    }
+
+
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    function setInteractions() {
+
+    	$replayBtn.addEventListener("mouseover", doReplayOver);
+
+        $hit.addEventListener("mouseover", function() {
+            ctaOver();
+            killAutoCollapse();
+        });
+        $hit.addEventListener("mouseout", function() {
+            ctaOut();
+        });
+    }
+
+    function doReplayOver(){
+		TweenMax.to($replayBtn, 0.3, {rotationZ: 360, transformOrigin:"43% 43%",
+		  onComplete:function(){
+		    TweenMax.set($replayBtn, {rotationZ:0});
+		  }
+		});
+	}
+    // cta handlers
+	function ctaOver(){
+		TweenMax.to('#expansion #clickthroughButton .cta-arrow', 0.15, {x:8, ease:Back.easeIn});
+	};
+	function ctaOut(){
+		TweenMax.to('#expansion #clickthroughButton .cta-arrow', 0.2, {x:0, ease:Power1.easeOut});
+	};
+
+
+    </script>
+</body>
+
+</html>

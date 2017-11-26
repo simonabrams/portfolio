@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="ad.size" content="width=300,height=250">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- main banner styles -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <title></title>
+    <style>
+    html {
+        box-sizing: border-box;
+    }
+    
+    *,
+    *:before,
+    *:after {
+        box-sizing: inherit;
+    }
+    
+    body {
+        background-color: #fff;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* offscreen text for screen readers - accessibility requirement */
+    .off-screen {
+        position: absolute;
+        clip: rect(1px 1px 1px 1px);
+        /* IE6, IE7 */
+        clip: rect(1px, 1px, 1px, 1px);
+        padding: 0;
+        border: 0;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+        z-index: -1000;
+    }
+    /* end offscreen text */
+    </style>
+    <!-- GSAP from Flashtalking's CDN -->
+    <script src="https://cdn.flashtalking.com/frameworks/js/gsap/1.19.0/TweenMax.min.js "></script>
+
+</head>
+
+<body>
+    <div id="banner" class="dimensions hidden">
+        <!-- accessibility -->
+        <div class="off-screen">
+            <p>Planning a trip?</p>
+            <p>Earn 2x points when you book with Chase Sapphire Preferred<sup>&reg;</sup>.</p>
+            <p>Use them wherever you go next.</p>
+        </div>
+        <ft-default clicktag>
+            <div id="bg" class="dimensions"></div>
+            <!-- <div class="comp dimensions"></div> -->
+            <div class="card-container">
+                <div class="facets retina"></div>
+                <div class="card image center-horiz"></div>
+            </div>
+            <div class="logo hidden image"></div>
+            <!-- headlines -->
+            <div class="headlines center-horiz">
+                <div id="headline1" class="text text_1 center-horiz image hidden"></div>
+                <div id="headline2" class="text text_2 center-horiz image hidden"></div>
+                <div id="headline3" class="text text_3 center-horiz image hidden"></div>
+            </div>
+            <div class="text-subhead image hidden center-horiz retina"></div>
+        </ft-default>
+        <div id="cta" tabindex="1" class="hidden">
+            <div class="cta_label image"></div>
+        </div>
+        <!-- control buttons -->
+        <div id="replay" class="hidden"></div>
+        <div id="controls" tabindex="1">
+            <div id="btn_pause" name="pause-button" class="image"></div>
+            <div id="btn_play" name="play-button" class="image hidden"></div>
+            <div id="btn_replay" name="replay-button" class="image hidden"></div>
+        </div>
+    </div>
+    <!--  Flashtalking -->
+    <script src="https://cdn.flashtalking.com/frameworks/js/api/2/9/html5API.js"></script>
+    <script src="https://cdn.flashtalking.com/feeds/frameworks/js/api/20/FTFeed.min.js"></script>
+    <!-- Fittext -->
+    <script src="https://cdn.flashtalking.com/frameworks/js/jquery/jquery-2.1.4.min.js"></script>
+    <script src="js/jquery.fittext.js"></script>
+    <!-- animation -->
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
+
+</html>
