@@ -52,6 +52,12 @@ body {
   position: relative;
   font-size: 1.1rem;
   line-height: 1.5; }
+  .about a {
+    text-decoration: none;
+    border-bottom: none;
+    transition: border-bottom 0.3s cubic-bezier(0.65, 0.05, 0.36, 1); }
+  .about a:hover {
+    border-bottom: 2px solid #9d9fa2; }
 
 .about__header {
   color: #2674a2; }
