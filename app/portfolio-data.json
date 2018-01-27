@@ -1,6 +1,14 @@
 {
     "banners": [
         {
+            "name": "Chase Pay: All in One",
+            "description" : "Chase Pay HTML5 banner, Adobe Animate CC + GSAP platform",
+            "url": "work/banners/chase-allInOne-300x600",
+            "thumbnailUrl": "thumbnail.jpg",
+            "width": 300,
+            "height": 600
+        },
+        {
             "name": "Blizzard: Overwatch/20 Million",
             "description" : "Overwatch banner. HTML5 animation, GSAP platform",
             "url": "work/banners/blizzard-20million-300x250",

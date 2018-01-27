@@ -11,6 +11,8 @@
   "devDependencies": {
     "browser-sync": "^2.18.13",
     "del": "^2.2.2",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
     "fs": "0.0.1-security",
     "gulp": "^3.9.1",
     "gulp-cache": "^0.4.6",

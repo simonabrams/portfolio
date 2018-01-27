@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="ad.size" content="width=300,height=600">
+<script type="text/javascript">
+	var clickTag = "http://www.google.com";
+</script>
+<style type="text/css">
+	html, body
+	{
+		margin: 0;
+		padding: 0;
+	}
+
+	#container
+	{
+		position: relative;
+		top: 0px;
+		left: 0px;
+		display:block;
+		width:300px;
+		height:600px;
+		/* sq-border-start */
+		box-sizing: border-box;
+		moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		border: solid #002f6c 1px;
+		/* sq-border-end */
+
+		background: #FFFFFF;
+		overflow:hidden;
+	}
+
+	#canvas
+	{
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		-moz-user-select: none;
+	  -webkit-user-select: none;
+	  -ms-user-select: none;
+	  user-select: none;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		cursor: pointer;
+	}
+	/* offscreen text for screen readers - accessibility requirement */
+.off-screen {
+	position: absolute;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	clip: rect(1px, 1px, 1px, 1px);
+	padding: 0;
+	border: 0;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	z-index: -1000;
+}
+            /* end offscreen text */
+
+</style>
+
+<script type="text/javascript" src="https://s0.2mdn.net/ads/studio/cached_libs/tweenmax_1.18.5_23b0de6da0ee295131e32a500470610c_min.js"></script>
+<script type="text/javascript" src="https://s0.2mdn.net/ads/studio/cached_libs/createjs_2015.11.26_54e1c3722102182bb133912ad4442e19_min.js"></script>
+<script type="text/javascript" src="index.js"></script>
+<script type="text/javascript" src="js/plugins.js"></script>
+<script type="text/javascript" src="js/EaselPlugin.min.js"></script>
+<script>
+/**
+** BANNER BY SQUAREWAVE (squarewave.com)
+** June2017.1
+**/
+var comp,
+		lib,
+		canvas, 
+		stage, 
+		exportRoot,
+		images;
+
+function onDocumentReady()
+{
+	comp = AdobeAn.compositions[Object.keys(AdobeAn.compositions)[0]];
+	lib = comp.getLibrary();
+	canvas = fromId("canvas");
+	images = images||{};
+
+	onCustomDocumentReady();
+
+	if( lib.properties.manifest && lib.properties.manifest.length > 0 )
+	{
+		var loader = new createjs.LoadQueue(false);
+		loader.addEventListener("fileload", handleImageLoad);
+		loader.addEventListener("complete", handleLoadComplete);
+		loader.loadManifest(lib.properties.manifest);
+	}
+	else
+	{
+		handleLoadComplete();
+	}
+}
+
+function handleImageLoad(evt) 
+{
+	var images = comp.getImages();
+	if(evt && evt.item.type == "image") { images[evt.item.id] = evt.result; }
+}
+
+function handleLoadComplete()
+{
+	exportRoot = new lib.index();
+
+	canvas.addEventListener('mouseover' , handleRollOverEvent );
+	canvas.addEventListener('mouseleave' , handleRollOutEvent );
+	canvas.addEventListener('click' , handleClickEvent );
+
+	stage = new lib.Stage(canvas);
+	stage.addChild(exportRoot);
+	stage.update();
+	stage.enableMouseOver();
+	
+	createjs.Ticker.setFPS(lib.properties.fps);
+	createjs.Ticker.addEventListener("tick", stage);
+	
+
+	var ad = new createjs.AdHelper(stage)
+        .timeSync()
+		.highDPI(true, 2);
+	ad.on("slow" , handleSlowDown );
+	ad.on("sleep" , handleSleep );
+	ad.on("wake" , handleWake );
+
+	exportRoot.adHelper = ad;
+	
+	AdobeAn.compositionLoaded(lib.properties.id);
+	onCreateJSLoadedAndReady();
+}
+
+/** start custom js -- do not remove **/
+
+function onCustomDocumentReady()
+{
+	canvas.addEventListener( 'blur' , onAdFocusOut );
+	canvas.addEventListener( 'focus' , onAdFocusIn );
+}
+
+function onCreateJSLoadedAndReady()
+{
+	// exportRoot, stage and createjs are ready to go // 
+	if(exportRoot.onInit) exportRoot.onInit();
+	fromId('container').style.display = "block";
+}
+
+function handleRollOverEvent(e)
+{
+	if(exportRoot.onRollOverEvent) exportRoot.onRollOverEvent(e);
+}
+
+function handleRollOutEvent(e)
+{
+	if(exportRoot.onRollOutEvent) exportRoot.onRollOutEvent(e);
+}
+
+function handleClickEvent(e)
+{
+	if(exportRoot.onClickEvent) exportRoot.onClickEvent(e);
+}
+
+function handleSlowDown()
+{
+	if(exportRoot.onSlowDown) exportRoot.onSlowDown();
+}
+
+function handleSleep()
+{
+	if(exportRoot.onSleep) exportRoot.onSleep();
+}
+
+function handleWake()
+{
+	if(exportRoot.onWake) exportRoot.onWake();
+}
+
+/**
+* ADA Compliant Code 
+**/
+function onAdFocusIn()
+{
+	canvas.addEventListener('keydown' , onAdKeyboardEvent );
+	if( exportRoot.setTabFocus ) exportRoot.setTabFocus();
+}
+
+function onAdFocusOut()
+{
+	canvas.removeEventListener('keydown' , onAdKeyboardEvent );
+	if( exportRoot.removeTabFocus ) exportRoot.removeTabFocus();
+}
+
+function onAdKeyboardEvent( e )
+{
+	trace( e );
+	if( e.code == "Tab" || e.keyCode == 9 )
+	{
+		if( exportRoot && 
+				exportRoot.focusNextElement &&
+				exportRoot.totalFocusElements && 
+				exportRoot.totalFocusElements > 0 &&
+				exportRoot.currentFocusElement < exportRoot.totalFocusElements &&
+				exportRoot.focusNextElement() )
+		{
+			e.preventDefault();
+		}
+		else
+		{
+			if( exportRoot && exportRoot.currentFocusElement ) exportRoot.currentFocusElement = 0;
+		}
+	}
+	else
+	{
+		if( exportRoot.handleKeyboardEvent ) exportRoot.handleKeyboardEvent( e );
+	}
+}
+
+
+/** end custom js -- do not remove **/
+
+</script>
+</head>
+<body>
+	<div id="container">
+  
+	<!-- accessibility text -->
+  	<div class="off-screen">
+  		<p>Advertisment: Chase Pay</p>
+     	<p>A simple app designed to save you time and money.<p>
+     	<p>Pay with points.</p>
+     	<p>Pay at the pump.</p>
+     	<p>Pay on the go.</p>
+     	<p>Get more than you pay for.</p>
+      	<p>Learn more.</p>
+  	</div>
+		<canvas tabindex="0" id="canvas" width="600" height="1200"></canvas>
+	</div>
+</body>
+</html>
