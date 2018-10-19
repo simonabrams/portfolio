@@ -2,10 +2,19 @@
 
 {{!-- Banners grid will go here --}}
 {{#*inline "content-block"}}
-    <div class="work-grid">
-    <div class="work-grid-sizer"></div>
-    {{#each banners}}
-        {{> includes/workModule}}
-    {{/each}}
+	{{!-- <div class="featured-work">
+		<h1>Featured Projects</h1>
+		{{#each featured}}
+			{{> includes/featured}}
+		{{/each}}
+	</div> --}}
+	<div class="work-container">
+	    {{!-- <h1>Digital Ads</h1> --}}
+	    <div class="work-grid">
+		    <div class="work-grid-sizer"></div>
+		    {{#each banners}}
+		        {{> includes/workModule}}
+		    {{/each}}
+	    </div>
     </div>
 {{/inline}}

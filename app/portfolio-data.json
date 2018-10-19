@@ -1,6 +1,41 @@
 {
     "banners": [
         {
+            "name": "Trident Vibes - Tropical",
+            "description" : "Trident banners promoting new flavors, GSAP Platform",
+            "url": "work/banners/trident-vibes-tropical-300x600",
+            "thumbnailUrl": "images/thumbnail.jpg",
+            "width": 300,
+            "height": 600
+        },{
+            "name": "New Museum",
+            "description" : "Banners for a new interactive exhibit at New York's New Museum",
+            "url": "work/banners/new-museum-300x250",
+            "thumbnailUrl": "images/thumbnail.jpg",
+            "width": 300,
+            "height": 250
+        },{
+            "name": "Chase Macaskill",
+            "description" : "Chase Ink Business Banking, Adobe Animate CC + GSAP",
+            "url": "work/banners/chase-macaskill-300x600",
+            "thumbnailUrl": "thumbnail.jpg",
+            "width": 300,
+            "height": 600
+        },{
+            "name": "Philadelphia Cream Cheese - Dips",
+            "description" : "New Philly Cream Cheese Dips flavors, GSAP Platform",
+            "url": "work/banners/philly-dips-300x250",
+            "thumbnailUrl": "images/thumbnail.jpg",
+            "width": 300,
+            "height": 250
+        },{
+            "name": "Ocean Spray Pink Cranberries",
+            "description" : "New campaign banners for Ocean Spray, Adobe Animate CC, GSAP Platform",
+            "url": "work/banners/ocean-spray-pink-300x250",
+            "thumbnailUrl": "images/thumbnail.jpg",
+            "width": 300,
+            "height": 250
+        },{
             "name": "Chase Pay: All in One",
             "description" : "Chase Pay HTML5 banner, Adobe Animate CC + GSAP platform",
             "url": "work/banners/chase-allInOne-300x600",
@@ -153,5 +188,39 @@
             "height": 250
         }
 
+    ],
+
+    "featured": [
+        {
+            "name": "Aurum Therapy",
+            "description": "Branding, logo design, art direction and site design",
+            "url": "",
+            "thumbnailUrl":"",
+            "livelUrl":"http://aurumtherapy.com"
+
+        },
+        {
+            "name": "Frisch Ideas",
+            "description": "Full site redesign and refresh, using React",
+            "url": "",
+            "thumbnailUrl":"",
+            "livelUrl":"http://frischideas.com"
+
+        },
+        {
+            "name": "Braindrops",
+            "description": "Experiential project involving 3d stereoscopic photography, print design and automation",
+            "url": "",
+            "thumbnailUrl":"",
+            "livelUrl":""
+
+        },
+        {
+            "name": "ADC Young Guns 2014",
+            "description": "Director of photography creating collateral for the 2014 ADC Young Guns Awards",
+            "url": "",
+            "thumbnailUrl":"",
+            "livelUrl":""
+        }
     ]
 }

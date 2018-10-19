@@ -1,7 +1,8 @@
-const workModules = document.querySelectorAll('.work-module');
-let descr;
+"use strict";
 
-var $workGrid = $('.work-grid').masonry({
+const workModules = document.querySelectorAll('.work-module');
+
+const $workGrid = $('.work-grid').masonry({
     itemSelector: '.work-module',
     columnwidth: 'work-grid-sizer',
     gutter: 30,
@@ -21,12 +22,9 @@ function toggleInfo() {
     }
 }
 
-// add click event handlers for each work module
-// workModules.forEach(workModule => workModule.addEventListener('click',  showWork ));
+// add mouseover event handlers for each work module
 workModules.forEach(workModule => workModule.addEventListener('mouseover',  toggleInfo ));
 workModules.forEach(workModule => workModule.addEventListener('mouseout',  toggleInfo ));
-// click overlay to dismiss it
-// overlay.addEventListener('click', toggleOverlay);
 
 
 

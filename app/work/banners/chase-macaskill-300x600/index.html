@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="ad.size" content="width=300,height=600">
+    <meta name="author" content="droga5.com">
+    <style>
+    /* controls */
+    
+    .hidden {
+        visibility: hidden;
+    }
+    svg.hidden {
+    	display: none;
+    }
+    
+    .controls {
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        left: 283px;
+        top: 7px;
+        cursor: pointer;
+    }
+    
+    .icon
+    {
+        fill: #535353;
+        width: 14px;
+        height: 14px;
+        top: 0;
+        left: 0;
+        position: absolute;
+    }
+
+    .color-white svg {
+		fill: #fff;
+    }
+
+    .cta-container {
+    	position: absolute;
+    	left: 90px;
+    	top: 443px;
+    	width: 119px;
+    	height: 36px;
+    }
+
+    .btn_cta {
+    	visibility: hidden;
+    	opacity: 0;
+    	width: 119px;
+    	height: 36px;
+    	cursor: pointer;
+    }
+    
+    
+    /* offscreen text for screen readers - accessibility requirement */
+    
+    .off-screen {
+        position: absolute;
+        clip: rect(1px 1px 1px 1px);
+        /* IE6, IE7 */
+        clip: rect(1px, 1px, 1px, 1px);
+        padding: 0;
+        border: 0;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+        z-index: -1000;
+    }
+    /* end offscreen text */
+    </style>
+    <script src="https://s0.2mdn.net/ads/studio/cached_libs/createjs_2015.11.26_54e1c3722102182bb133912ad4442e19_min.js"></script>
+    <script src="https://s0.2mdn.net/ads/studio/cached_libs/tweenmax_1.18.0_499ba64a23378545748ff12d372e59e9_min.js"></script>
+    <script>
+    var clickTag = "http://www.example.com";
+    </script>
+    <script src="index.js"></script>
+    <script>
+    var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
+
+    function init() {
+        canvas = document.getElementById("canvas");
+        anim_container = document.getElementById("animation_container");
+        dom_overlay_container = document.getElementById("dom_overlay_container");
+        images = images || {};
+        // loader
+        var loader = new createjs.LoadQueue(false);
+        loader.addEventListener("fileload", handleFileLoad);
+        loader.addEventListener("complete", handleComplete);
+        loader.loadManifest(lib.properties.manifest);
+    }
+
+    function handleFileLoad(evt) {
+        if (evt.item.type == "image") {
+            images[evt.item.id] = evt.result;
+        }
+    }
+
+    function handleComplete(evt) {
+        //This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
+        var queue = evt.target;
+        var ssMetadata = lib.ssMetadata;
+        for (i = 0; i < ssMetadata.length; i++) {
+            ss[ssMetadata[i].name] = new createjs.SpriteSheet({
+                "images": [queue.getResult(ssMetadata[i].name)],
+                "frames": ssMetadata[i].frames
+            })
+        }
+        exportRoot = new lib.index();
+        stage = new createjs.Stage(canvas);
+        stage.addChild(exportRoot);
+        stage.enableMouseOver();
+        stage.snapToPixelEnabled = true;
+
+        // smoothing
+        var ctx = stage.canvas.getContext("2d");
+		ctx.imageSmoothingEnabled = ctx.msImageSmoothingEnabled = ctx.webkitImageSmoothingEnabled =    
+	        ctx.mozImageSmoothingEnabled = true;
+
+        //Registers the "tick" event listener.
+        fnStartAnimation = function() {
+                createjs.Ticker.setFPS(lib.properties.fps);
+                createjs.Ticker.addEventListener("tick", stage);
+            }
+            //Code to support hidpi screens and responsive scaling.
+        function makeResponsive(isResp, respDim, isScale, scaleType) {
+            var lastW, lastH, lastS = 1;
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            function resizeCanvas() {
+                var w = lib.properties.width,
+                    h = lib.properties.height;
+                var iw = window.innerWidth,
+                    ih = window.innerHeight;
+                var pRatio = window.devicePixelRatio || 1,
+                    xRatio = iw / w,
+                    yRatio = ih / h,
+                    sRatio = 1;
+                if (isResp) {
+                    if ((respDim == 'width' && lastW == iw) || (respDim == 'height' && lastH == ih)) {
+                        sRatio = lastS;
+                    } else if (!isScale) {
+                        if (iw < w || ih < h)
+                            sRatio = Math.min(xRatio, yRatio);
+                    } else if (scaleType == 1) {
+                        sRatio = Math.min(xRatio, yRatio);
+                    } else if (scaleType == 2) {
+                        sRatio = Math.max(xRatio, yRatio);
+                    }
+                }
+                canvas.width = w * pRatio * sRatio;
+                canvas.height = h * pRatio * sRatio;
+                canvas.style.width = dom_overlay_container.style.width = anim_container.style.width = w * sRatio + 'px';
+                canvas.style.height = anim_container.style.height = dom_overlay_container.style.height = h * sRatio + 'px';
+                stage.scaleX = pRatio * sRatio;
+                stage.scaleY = pRatio * sRatio;
+                lastW = iw;
+                lastH = ih;
+                lastS = sRatio;
+            }
+        }
+        makeResponsive(true, 'both', false, 1);
+        fnStartAnimation();
+
+        // custom ready
+        onCustomReady();
+    }
+    </script>
+</head>
+
+<body onload="init();" style="margin:0px;">
+
+    <!-- SVG icons for play/pause/replay buttons -->
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0" height="0" class="hidden">
+        <defs>
+            <symbol id="pause-icon" viewBox="0 0 20 20">
+                <title>Pause icon</title>
+                <path d="M7.092 15H6.78c-.554 0-1.007-.453-1.007-1.006V6.006C5.773 5.453 6.226 5 6.78 5h.312c.553 0 1.006.453 1.006 1.006v7.988c0 .553-.453 1.006-1.006 1.006zM13.22 15h-.312c-.553 0-1.006-.453-1.006-1.006V6.006c0-.553.453-1.006 1.006-1.006h.312c.554 0 1.007.453 1.007 1.006v7.988c0 .553-.453 1.006-1.007 1.006z" ></path>
+            </symbol>
+            <symbol id="play-icon" viewBox="0 0 20 20">
+                <title>Play icon</title>
+                <path d="M6.001,5v10l7.859-5L6,5H6.001z"></path>
+            </symbol>
+            <symbol id="replay-icon" viewBox="0 0 20 20">
+            	<title>Replay icon</title>
+            	<path d="M15 8.8c0-2.77-2.24-5-5-5s-5 2.23-5 5v.66h1.34V8.8c0-2.03 1.64-3.67 3.66-3.67s3.66 1.64 3.66 3.66-1.64 3.64-3.66 3.64h-.77l1.5-1.5-.96-.93-2.15 2.16-.94.94.94.96 2.16 2.15.94-.93-1.47-1.47H10c2.76 0 5-2.25 5-5z"></path>
+            </symbol>
+            <symbol id="cta-button" viewBox="0 0 119 36">
+			  <path id="cta-bg" fill="#0B79BF" d="M114 36H5c-2.75 0-5-2.25-5-5V5c0-2.75 2.25-5 5-5h109c2.75 0 5 2.25 5 5v26c0 2.75-2.25 5-5 5z"></path>
+			  <path d="M24.5 21.78v-7.8h1.25v6.7h3.27v1.1H24.5zm10.64 0h-4.36v-7.8h4.36v1.07h-3.1v2.13h2.9v1.07h-2.9v2.45h3.1v1.08zm6.9 0l-.78-2.17H38.3l-.74 2.2h-1.33L39.1 14h1.4l2.9 7.84h-1.33zm-1.1-3.27l-.73-2.1-.2-.6c-.1-.3-.1-.5-.2-.7-.1.5-.2.9-.4 1.5l-.7 2.03H41zm5.16.2v3.1h-1.27V14H47c1 0 1.74.2 2.22.55.48.38.72.95.72 1.7 0 .98-.5 1.67-1.5 2.1l2.18 3.44h-1.44l-1.85-3.2H46.1zm0-1h.86c.6 0 1.02-.1 1.28-.3s.4-.52.4-.96c0-.45-.15-.77-.43-.96-.2-.2-.7-.3-1.2-.3h-.8v2.57zm12.5 4.2h-1.55l-3.8-6.2h-.04l.1.35c.1.68.1 1.3.1 1.83v4.06h-1.2V14h1.57l3.78 6.17h.04c0-.08 0-.38-.04-.9l-.02-1.2V14h1.17v7.8zm9.04 0l-2.23-6.5c.1.97.1 1.88.1 2.7v3.8h-1.2V14h1.8l2.2 6.2h.06l2.2-6.2h1.8v7.8H71.1v-3.86c0-.4 0-.9.03-1.52 0-.62.03-1 .05-1.13h-.04l-2.32 6.5H67.7zM81.57 18c0 1.26-.3 2.24-.94 2.95-.63.7-1.52 1.06-2.67 1.06-1.17 0-2.06-.34-2.7-1.04-.6-.7-.92-1.7-.92-3s.3-2.28.94-2.97c.63-.7 1.52-1.06 2.7-1.06 1.14 0 2.02.36 2.65 1.07.63.7.94 1.7.94 2.97zm-5.9 0c0 .95.2 1.7.58 2.17.4.5.96.76 1.7.76.76 0 1.32-.25 1.7-.74.4-.5.58-1.25.58-2.2 0-.98-.2-1.7-.57-2.2-.38-.5-.94-.75-1.7-.75-.75 0-1.32.25-1.7.74-.4.47-.58 1.2-.58 2.16zm9.25.8v3.1h-1.26V14h2.18c1 0 1.73.2 2.2.56.5.38.73.95.73 1.7 0 .98-.5 1.67-1.5 2.1l2.18 3.44H88l-1.83-3.12h-1.25zm0-1.07h.88c.58 0 1-.1 1.27-.32s.4-.5.4-.94c0-.45-.14-.77-.43-.96-.28-.2-.7-.3-1.3-.3h-.82v2.56zm10.45 4.18H91V14h4.37v1.08h-3.1v2.13h2.9v1.1h-2.9v2.5h3.1v1.1z" id="label" fill="#FFF"></path>
+            </symbol>
+        </defs>
+    </svg>
+
+    <!-- Banner -->
+    <div id="animation_container" tabindex="0" style="background-color:rgba(255, 255, 255, 1.00); width:300px; height:600px">
+        <canvas id="canvas" width="300" height="600" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
+        <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:300px; height:600px; position: absolute; left: 0px; top: 0px; display: block;">
+        </div>
+        <!-- controls -->
+        <div class="controls hidden" id="controls" tabindex="0">
+            <div name="pause-button" class="btn_pause">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="btn_pause"  class="icon icon-pause">
+                    <use xlink:href="#pause-icon" />
+                </svg>
+            </div>
+            <div name="play-button" class="btn_play hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="btn_play" class="icon icon-play">
+                    <use xlink:href="#play-icon" />
+                </svg>
+            </div>
+            <div name="replay-button" class="btn_replay hidden">
+            	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="btn_replay" class="icon icon-replay color-white">
+            		<use xlink:href="#replay-icon" />
+            	</svg>
+            </div>
+        </div>
+        <!-- cta -->
+        <div id="cta-container" class="cta-container" tabindex="0">
+        	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="btn_cta" class="btn_cta">
+        		<use xlink:href="#cta-button" />
+        	</svg>
+        </div>
+    </div>
+
+    <!-- hidden text for screen readers -->
+    <div class="off-screen">
+        <p class="offscreen_text">Earn 3X points on shipping purchases and in other business categories</p>
+        <p class="offscreen_text">Spend limitations apply.</p>
+        <p class="offscreen_text">Making shipping that much sweeter.</p>
+        <p class="offscreen_text">Ink Business Preferred.</p>
+        <p class="offscreen_text">3X points on select business categories.</p>
+        <p class="offscreen_text">Chase for Business. So You Can.</p>
+    </div>
+
+    <!-- 
+        Play/Pause, Replay and Keyboard controls 
+    -->
+    <script>
+    var animationContainer = document.getElementById('animation_container'),
+    	controls = document.querySelector('.controls'),
+        btn_play = document.querySelector('.btn_play'),
+        btn_pause = document.querySelector('.btn_pause'),
+        btn_replay = document.querySelector('.btn_replay'),
+	    cta = document.querySelector('.btn_cta'),
+        icons = document.querySelectorAll('.icon'),
+        isPaused = false;
+
+
+    // when the ad is in focus add keyboard control
+    function onCustomReady() {
+    	controls.classList.remove('hidden');
+        // activates play/pause/replay control buttons
+        controls.addEventListener('mousedown', togglePlayPause);
+
+        // add cta events
+        cta.addEventListener('mouseover', doCtaOver);
+        cta.addEventListener('mouseout', doCtaOut);
+        cta.addEventListener('mousedown', doClickthrough);
+
+        // add replay button events
+        btn_replay.addEventListener('mouseover', doReplayBtnOver);
+        btn_replay.addEventListener('mousedown', doReplay);
+
+        // activate keyboard events when banner has focus
+        // and disable it when focus is lost
+        animationContainer.addEventListener('focus', onAdFocusIn);
+        // animationContainer.addEventListener('blur', onAdFocusOut);
+    }
+
+    function togglePlayPause(e) {
+        if (e.target.id == 'btn_pause' || e.target.id == 'btn_play') {
+            doPlayPause(e);
+        }
+    }
+
+    function doPlayPause() {
+        if (isPaused === false) {
+            TweenMax.set(btn_pause, {
+                autoAlpha: 0
+            });
+            TweenMax.set(btn_play, {
+                autoAlpha: 1
+            });
+            exportRoot.stop();
+        } else {
+            TweenMax.set(btn_pause, {
+                autoAlpha: 1
+            });
+            TweenMax.set(btn_play, {
+                autoAlpha: 0
+            });
+            exportRoot.play();
+        }
+        isPaused = !isPaused;
+    }
+    // sets play/pause controls to white
+    function toggleControlColor() {
+		controls.classList.add('color-white');
+    }
+
+    // show the cta
+    function showCta() {
+        TweenMax.from(cta, 0.6, {y:"+=30", ease:Strong.easeOut});
+        TweenMax.to(cta, 0.6, {autoAlpha: 1, ease:Strong.easeInOut}, "-=0.6");
+    }
+    // cta event handlers
+    function doCtaOver() {
+        TweenMax.to(this, 0.25, {scale:1.1, ease:Power1.easeInOut});
+    }
+
+    function doCtaOut() {
+        TweenMax.to(cta, 0.25, {scale:1, ease:Power1.easeInOut});
+    }
+
+    // show the replay button
+    function showReplayButton() {
+        TweenMax.to([btn_pause, btn_play], 0.1, {
+            autoAlpha: 0
+        });
+        TweenMax.to(btn_replay, 0.1, {
+            autoAlpha: 1
+        });
+    }
+
+    // replay
+    function doReplayBtnOver() {
+        TweenMax.to(this, 0.3, {
+            rotationZ: 360,
+            transformOrigin: "50% 6.5px",
+            onComplete: function() {
+                TweenMax.set(btn_replay, {
+                    rotationZ: 0
+                });
+            }
+        });
+    }
+
+    // replay button click handler
+    function doReplay(e) {
+        if (e.target.id == 'btn_replay') {
+            restartBanner();
+        }
+    }
+
+    // resets controls states and restarts the banner
+    function restartBanner() {
+    	controls.classList.remove('color-white');
+        TweenMax.to(btn_pause, 0.1, {
+            autoAlpha: 1
+        });
+        TweenMax.to(btn_replay, 0.1, {
+            autoAlpha: 0
+        });
+        // start the banner over
+        exportRoot.gotoAndPlay("start");
+    }
+
+    // banner clickthrough
+    function doClickthrough() {
+    	window.open(clickTag, "_blank");
+    }
+
+    // handle keyboard events for ADA compliance
+    function onAdFocusIn() {
+        animationContainer.addEventListener('keydown', keyboardEventHandler, false);
+    }
+
+    function onAdFocusOut() {
+        animationContainer.removeEventListener('keydown', keyboardEventHandler, false);
+    }
+
+    function keyboardEventHandler(e) {
+        var keyCode = e.which || e.keyCode;
+        // if spacebar or return is pressed
+        if (keyCode === 32 || keyCode === 13) {
+            switch (document.activeElement.id) {
+                // we're on the pause button - play or pause the banner
+                case 'controls':
+                    console.log(exportRoot.complete)
+                    if (exportRoot.complete === false) {
+                        doPlayPause();
+                    } else if (exportRoot.complete === true) {
+                        restartBanner();
+                    }
+                    break;
+                case 'cta-container':
+                    doClickthrough();
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    // fades target clip in/out
+    function fadeClip(target, a){
+        var _alpha = (a === 'in' ? 1 : 0);
+        var _target = target;
+        TweenMax.to(_target, 0.75, {autoAlpha: _alpha, ease:Strong.easeOut});
+    }
+
+
+    </script>
+</body>
+
+</html>

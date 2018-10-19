@@ -12,12 +12,12 @@ html {
 body {
   padding: 0;
   margin: 0;
-  background-color: #1b1b1b;
-  background: url("../images/bg-blur.jpg") no-repeat;
+  background-color: #1c1c1c;
   background-position: center;
   background-size: cover;
   background-blend-mode: screen;
-  font-family: 'prenton-display', sans-serif; }
+  font-family: 'prenton-display', sans-serif;
+  color: #ccc; }
 
 html {
   box-sizing: border-box; }
@@ -25,14 +25,35 @@ html {
 *, *:before, *:after {
   box-sizing: inherit; }
 
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; }
+
+/* featured */
+.featured-work {
+  border: 1px solid red;
+  max-width: 966px;
+  margin: auto; }
+
+.featured-module {
+  width: 100%;
+  border: 1px solid #bcbfc4;
+  margin-bottom: 1em;
+  padding: 1em; }
+
+.work-container {
+  justify-content: space-around; }
+
 .work-description {
   margin: 0;
   padding: 2px;
-  color: white;
+  color: #eee;
   font-size: 0.9rem; }
 
 .work-grid {
-  margin: 2rem auto; }
+  margin: 2rem auto;
+  flex: 1; }
 
 /* sizer element for Masonry */
 .work-grid-sizer {
@@ -52,7 +73,6 @@ html {
     float: left; }
 
 .work-thumbnail {
-  opacity: 0.8;
   transform: scale(1.01);
   transition: all 0.5s cubic-bezier(0.67, 0.01, 0.26, 1); }
 
@@ -73,10 +93,10 @@ html {
   .work-info a {
     text-decoration: none;
     color: white; }
-  .work-info a:hover {
-    color: #f36a00; }
-  .work-info a:visited {
-    color: white; }
+    .work-info a:hover {
+      color: #f36a00; }
+    .work-info a:visited {
+      color: white; }
 
 .work-info.active {
   transform: translateY(0); }

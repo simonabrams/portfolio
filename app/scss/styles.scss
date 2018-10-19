@@ -7,19 +7,44 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+/* featured */
+.featured-work {
+    border: 1px solid red;
+    max-width: 966px;
+    margin: auto;
+}
+
+.featured-module {
+    width: 100%;
+    border: 1px solid $color-lightgrey;
+    margin-bottom: 1em;
+    padding: 1em;
+}
 
 $workInfoHeight: 5rem;
 
+.work-container {
+    // flex: 100%;
+    // max-width: $bp-1681;
+    // display: flex;
+    justify-content: space-around;
+    // margin: auto;
+}
 .work-description {
     margin: 0;
     padding: 2px;
-    color: white;
+    color: $color-offwhite;
     font-size: 0.9rem;
 }
 
 .work-grid {
     margin: 2rem auto;
-
+    flex: 1;
 }
 
 /* sizer element for Masonry */
@@ -43,14 +68,16 @@ $workInfoHeight: 5rem;
 }
 
 .work-thumbnail {
-    opacity: 0.8;
+    // opacity: 0.8;
     transform: scale(1.01);
     transition: all 0.5s cubic-bezier(0.67, 0.01, 0.26, 1);
+    // filter: grayscale(1)
 }
 
 .work-thumbnail:hover {
     opacity: 1;
     transform: scale(1.05);
+    // filter: grayscale(0)
 }
 
 .work-info {
@@ -67,12 +94,12 @@ $workInfoHeight: 5rem;
     a {
         text-decoration: none;
         color: white;
-    }
-    a:hover {
-        color: $color-orange;
-    }
-    a:visited {
-        color: white;
+        &:hover {
+            color: $color-orange;
+        }
+        &:visited {
+            color: white;
+        }
     }
 }
 

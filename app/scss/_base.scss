@@ -14,10 +14,10 @@ html {
 body {
     padding: 0;
     margin: 0;
-    background-color: #1b1b1b;
-    background: url('../images/bg-blur.jpg') no-repeat;
+    background-color: hsl(0, 0%, 11%);
     background-position: center;
     background-size: cover;
     background-blend-mode: screen;
     font-family: 'prenton-display', sans-serif;
+    color: #ccc;
 }
