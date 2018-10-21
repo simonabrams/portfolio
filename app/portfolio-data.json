@@ -15,6 +15,13 @@
             "width": 300,
             "height": 250
         },{
+            "name": "Pier1",
+            "description" : "Pier1 campaign ads, featuring panning background. GSAP Platform",
+            "url": "work/banners/pier1-dfw-300x600",
+            "thumbnailUrl": "images/thumbnail.jpg",
+            "width": 300,
+            "height": 600
+        },{
             "name": "Chase Macaskill",
             "description" : "Chase Ink Business Banking, Adobe Animate CC + GSAP",
             "url": "work/banners/chase-macaskill-300x600",
